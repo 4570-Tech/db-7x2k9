@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kevin's Daily Brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,700;9..144,800;9..144,900&display=swap" rel="stylesheet">
+<style>
+  :root{ color-scheme: light; }
+  *{ box-sizing:border-box; }
+  body{ margin:0; background:#f3eee4; color:#15140f; font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; font-size:16px; line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .display{ font-family:"Fraunces",Georgia,"Times New Roman",serif; }
+  .wrap{ max-width:1360px; margin:0 auto; padding:12px 26px 50px; }
+
+  header.masthead{ border-bottom:3px double #15140f; padding-bottom:7px; margin-bottom:8px; }
+  .hero{ width:100%; height:50px; display:block; border-radius:8px; margin-bottom:6px; }
+  .brandrow{ display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:6px; }
+  .brand{ font-size:38px; font-weight:900; letter-spacing:-1.2px; line-height:1; }
+  .brand .accent{ color:#b8472b; }
+  .dateline{ font-size:14px; color:#5a574f; font-weight:700; }
+
+  .striphead{ display:flex; align-items:center; gap:8px; margin:8px 0 3px; }
+  .striphead h2{ font-size:18px; margin:0; font-weight:800; }
+  .striphead a.more{ font-size:12.5px; color:#2a6f97; font-weight:700; text-decoration:none; margin-left:auto; }
+  .striphead a.more:hover{ text-decoration:underline; }
+  .ico{ width:22px; height:22px; flex:0 0 22px; }
+  .widgetbox{ background:#fff; border:1px solid #e2ddd0; border-radius:10px; padding:5px 7px; }
+
+  .wfallback{ font-size:13px; color:#6b6860; padding:7px 4px; }
+  .wfallback a{ color:#2a6f97; }
+
+  /* live weather cards — compact */
+  .wxrow{ display:flex; gap:7px; flex-wrap:nowrap; overflow-x:auto; }
+  .wxcard{ flex:1 1 0; min-width:84px; background:#f6fafe; border:1px solid #dbe7f1; border-radius:9px; padding:5px 4px 6px; text-align:center; }
+  .wxname{ font-size:10px; font-weight:800; color:#2a6f97; text-transform:uppercase; letter-spacing:.3px; }
+  .wxemoji{ font-size:20px; margin:1px 0; line-height:1; }
+  .wxtemp{ font-size:15px; font-weight:800; }
+  .wxdesc{ font-size:9.5px; color:#6b6860; line-height:1.2; margin-top:1px; }
+  .wxpop{ font-size:9.5px; color:#2a6f97; font-weight:700; margin-top:1px; }
+
+  .columns{ display:flex; gap:22px; align-items:flex-start; margin-top:14px; }
+  .col{ flex:1 1 0; min-width:0; display:flex; flex-direction:column; gap:18px; }
+  @media (max-width:980px){ .columns{ flex-direction:column; } }
+  section.block{ background:#fff; border:1px solid #e2ddd0; border-radius:14px; padding:14px 19px 15px; box-shadow:0 1px 3px rgba(60,50,30,.05); }
+
+  .blockhead{ display:flex; align-items:center; gap:10px; border-bottom:3px solid #15140f; padding-bottom:7px; margin-bottom:11px; }
+  .blockhead h2{ font-size:22px; margin:0; font-weight:800; letter-spacing:-.4px; white-space:nowrap; }
+  .blockquip{ flex:1; font-size:11.5px; font-style:italic; color:#7a5a32; line-height:1.3; text-align:right; padding-left:10px; }
+  @media (max-width:560px){ .blockhead{ flex-wrap:wrap; } .blockquip{ flex-basis:100%; text-align:left; padding-left:0; } }
+
+  .item{ margin:0 0 12px; padding-bottom:11px; border-bottom:1px dashed #e7e1d3; }
+  .item:last-of-type{ border-bottom:none; padding-bottom:0; }
+  .item .top{ display:flex; align-items:baseline; gap:7px; flex-wrap:wrap; }
+  .withthumb{ display:flex; gap:12px; align-items:flex-start; }
+  .thumb-wrap{ position:relative; width:58px; height:58px; flex:0 0 58px; margin-top:2px; }
+  .thumb{ position:absolute; inset:0; width:58px; height:58px; border-radius:10px; object-fit:cover; background:#fff; }
+
+  .date{ font-size:10px; font-weight:800; color:#a89e8b; letter-spacing:.4px; text-transform:uppercase; white-space:nowrap; border:1px solid #e4ddcf; border-radius:5px; padding:2px 5px; background:#faf7f0; }
+  .date.today{ color:#1a7f4b; border-color:#bfe3cd; background:#eef8f1; }
+  .date.soon{ color:#b06a16; border-color:#ecd3ac; background:#fbf3e3; }
+  .datechip{ font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:.4px; padding:3px 7px; border-radius:20px; color:#fff; background:#8a857a; white-space:nowrap; }
+  .datechip.soon{ background:#d4862a; } .datechip.wknd{ background:#9c3a2e; }
+
+  .hl{ font-weight:700; font-size:16px; line-height:1.35; }
+  .hl a{ color:#15140f; text-decoration:none; border-bottom:2px solid #b8472b; }
+  .hl a:hover{ background:#fbe9df; }
+  .item p{ margin:4px 0 0; font-size:14.5px; color:#33312b; }
+  .src{ font-size:12px; color:#8a857a; font-style:italic; }
+  .meta{ display:flex; align-items:baseline; justify-content:space-between; gap:10px; margin-top:5px; }
+  .meta .date{ flex:0 0 auto; }
+  .pw{ font-size:10px; font-weight:800; padding:2px 6px; border-radius:5px; margin-left:auto; white-space:nowrap; }
+  .free{ background:#e3f4ea; color:#1a7f4b; border:1px solid #b7e0c7; }
+  .pay{ background:#fdecea; color:#c0392b; border:1px solid #f3c6c0; }
+  .alt{ font-size:12.5px; color:#2a6f97; margin-top:2px; }
+  .alt a{ color:#2a6f97; border-bottom:1px dotted #2a6f97; text-decoration:none; }
+  .subhead{ font-size:12px; font-weight:800; letter-spacing:.6px; color:#3a7d7b; text-transform:uppercase; margin:3px 0 8px; }
+
+  footer{ margin-top:22px; border-top:3px double #15140f; padding-top:11px; font-size:13px; color:#6b6860; }
+  footer b{ color:#15140f; }
+  .sources{ background:#fff; border:1px solid #e2ddd0; border-radius:10px; padding:9px 13px; margin:8px 0; font-size:13px; }
+
+  /* NEW vs already-seen markers */
+  .badge-new{ font-size:9px; font-weight:800; letter-spacing:.4px; text-transform:uppercase; padding:2px 6px; border-radius:5px; background:#1a7f4b; color:#fff; margin-left:4px; white-space:nowrap; }
+  .badge-upd{ font-size:9px; font-weight:800; letter-spacing:.4px; text-transform:uppercase; padding:2px 6px; border-radius:5px; background:#b06a16; color:#fff; margin-left:4px; white-space:nowrap; }
+  .whatsnew{ background:#eef8f1; border:1px solid #bfe3cd; border-radius:12px; padding:10px 15px 11px; margin-top:14px; }
+  .whatsnew h3{ font-size:14px; margin:0 0 5px; font-weight:800; display:flex; align-items:center; gap:7px; }
+  .whatsnew .cols{ display:flex; gap:26px; flex-wrap:wrap; }
+  .whatsnew .grp{ flex:1 1 280px; min-width:220px; }
+  .whatsnew .lbl{ font-size:10.5px; font-weight:800; text-transform:uppercase; letter-spacing:.5px; margin:2px 0 3px; }
+  .whatsnew .lbl.n{ color:#1a7f4b; } .whatsnew .lbl.u{ color:#b06a16; }
+  .whatsnew ul{ margin:0 0 2px; padding-left:17px; }
+  .whatsnew li{ font-size:13px; line-height:1.4; margin:1px 0; }
+  .whatsnew a{ color:#15140f; text-decoration:none; border-bottom:1px dotted #6b6860; }
+  .whatsnew a:hover{ background:#dff0e6; }
+  .whatsnew .sec{ font-size:11px; color:#6b6860; font-style:italic; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <svg class="hero" viewBox="0 0 1200 50" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sunrise over the skyline">
+      <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd79a"/><stop offset="0.55" stop-color="#f5a96b"/><stop offset="1" stop-color="#e07a52"/></linearGradient></defs>
+      <rect width="1200" height="50" fill="url(#sky)"/>
+      <circle cx="980" cy="34" r="18" fill="#fff3d6" opacity="0.9"/>
+      <g fill="#7a3b2e" opacity="0.92"><rect x="40" y="22" width="18" height="28"/><rect x="64" y="14" width="22" height="36"/><rect x="94" y="26" width="16" height="24"/><rect x="116" y="6" width="24" height="44"/><rect x="148" y="20" width="14" height="30"/><rect x="170" y="26" width="18" height="24"/><rect x="196" y="12" width="22" height="38"/><rect x="226" y="22" width="16" height="28"/><polygon points="116,6 128,-4 140,6"/></g>
+      <g fill="#5e2c22" opacity="0.85"><rect x="906" y="32" width="16" height="18"/><rect x="928" y="24" width="20" height="26"/><rect x="1004" y="28" width="18" height="22"/><rect x="1030" y="20" width="22" height="30"/><rect x="1064" y="30" width="16" height="20"/><rect x="1090" y="24" width="20" height="26"/></g>
+      <g transform="translate(568,16)"><path d="M3 8 h26 v8 a9 9 0 0 1 -9 9 h-8 a9 9 0 0 1 -9 -9 z" fill="#3b2a22"/><path d="M29 11 h4 a4 4 0 0 1 0 9 h-4" fill="none" stroke="#3b2a22" stroke-width="3"/><path d="M9 3 q3 -3 0 -7 M16 3 q3 -3 0 -7 M23 3 q3 -3 0 -7" stroke="#fff" stroke-width="2" fill="none" opacity="0.8"/></g>
+    </svg>
+    <div class="brandrow">
+      <div class="brand display">Kevin's <span class="accent">Daily Brief</span></div>
+      <div class="dateline">Wednesday, June 24, 2026 · Afternoon Edition · Keller, TX · ~5-min read</div>
+    </div>
+  </header>
+
+  <!-- LIVE MARKETS -->
+  <div class="striphead">
+    <svg class="ico" viewBox="0 0 24 24"><rect x="3" y="13" width="4" height="8" fill="#1a7f4b"/><rect x="10" y="8" width="4" height="13" fill="#2a6f97"/><rect x="17" y="4" width="4" height="17" fill="#6a4c93"/></svg>
+    <h2 class="display">Markets — Live</h2><a class="more" href="https://www.cnbc.com/markets/" target="_blank" rel="noopener">↗ full markets</a>
+  </div>
+  <div class="widgetbox">
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"><div class="wfallback">📈 Live ticker loads in your browser — <a href="https://www.cnbc.com/markets/" target="_blank" rel="noopener">open CNBC Markets ↗</a></div></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+      {"symbols":[{"proName":"FOREXCOM:SPXUSD","title":"S&P 500"},{"proName":"FOREXCOM:NSXUSD","title":"Nasdaq 100"},{"proName":"FOREXCOM:DJI","title":"Dow"},{"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},{"proName":"TVC:USOIL","title":"Oil WTI"},{"proName":"TVC:GOLD","title":"Gold"}],"showSymbolLogo":true,"isTransparent":true,"displayMode":"adaptive","colorTheme":"light","locale":"en"}
+      </script>
+    </div>
+  </div>
+
+  <!-- LIVE WEATHER -->
+  <div class="striphead">
+    <svg class="ico" viewBox="0 0 24 24"><circle cx="9" cy="9" r="5" fill="#f1b24a"/><path d="M7 17 a4 4 0 0 1 0 -8 a5 5 0 0 1 9 1 a3.5 3.5 0 0 1 0 7 z" fill="#cdd6dd"/></svg>
+    <h2 class="display">Keller Weather — Live</h2><a class="more" href="https://forecast.weather.gov/MapClick.php?lat=32.9346&amp;lon=-97.2517" target="_blank" rel="noopener">↗ full forecast (Keller / 76248)</a>
+  </div>
+  <div class="widgetbox">
+    <div id="wxcards" class="wxrow"><div class="wfallback">🌤️ Loading live Keller forecast…</div></div>
+  </div>
+  <script>
+  (function(){
+    function emoji(t, day){
+      t=(t||'').toLowerCase();
+      if(t.includes('thunder')||t.includes('tstorm')) return '⛈️';
+      if(t.includes('rain')||t.includes('shower')||t.includes('drizzle')) return '🌧️';
+      if(t.includes('snow')||t.includes('sleet')||t.includes('ice')) return '🌨️';
+      if(t.includes('fog')||t.includes('haze')) return '🌫️';
+      if(t.includes('wind')) return '💨';
+      if(t.includes('mostly cloudy')||t.includes('overcast')) return '☁️';
+      if(t.includes('partly')||t.includes('mostly sunny')||t.includes('few clouds')) return day?'⛅':'🌙';
+      if(t.includes('cloud')) return '🌥️';
+      if(t.includes('clear')||t.includes('sunny')||t.includes('hot')) return day?'☀️':'🌙';
+      return day?'🌤️':'🌙';
+    }
+    var box=document.getElementById('wxcards');
+    fetch('https://api.weather.gov/points/32.9346,-97.2517')
+      .then(function(r){return r.json();})
+      .then(function(p){return fetch(p.properties.forecast);})
+      .then(function(r){return r.json();})
+      .then(function(f){
+        var per=(f.properties.periods||[]).slice(0,6);
+        if(!per.length) throw new Error('no periods');
+        box.innerHTML=per.map(function(x){
+          var pop=(x.probabilityOfPrecipitation&&x.probabilityOfPrecipitation.value)||0;
+          var name=x.name.replace('This ','').replace('Overnight','Tonight');
+          return '<div class="wxcard"><div class="wxname">'+name+'</div>'+
+            '<div class="wxemoji">'+emoji(x.shortForecast,x.isDaytime)+'</div>'+
+            '<div class="wxtemp">'+x.temperature+'°'+x.temperatureUnit+'</div>'+
+            '<div class="wxdesc">'+x.shortForecast+'</div>'+
+            (pop>=15?'<div class="wxpop">💧 '+pop+'%</div>':'')+'</div>';
+        }).join('');
+      })
+      .catch(function(){
+        box.innerHTML='<div class="wfallback">🌤️ Live forecast couldn\'t load right now — <a href="https://forecast.weather.gov/MapClick.php?lat=32.9346&lon=-97.2517" target="_blank" rel="noopener">open the NWS Keller (76248) forecast ↗</a></div>';
+      });
+  })();
+  </script>
+
+  <!-- WHAT'S NEW THIS EDITION -->
+  <div class="whatsnew">
+    <h3>🆕 New this edition <span class="sec">— skim only what changed since this morning's brief</span></h3>
+    <div class="cols">
+      <div class="grp">
+        <div class="lbl n">🆕 New stories &amp; sections</div>
+        <ul>
+          <li><a href="#b-bounce">Wall Street steadies — chips claw back ahead of Micron</a> <span class="sec">— Business / Tech</span></li>
+          <li><a href="#t-oai">OpenAI &amp; Nvidia lock in a 10-gigawatt, up-to-$100B buildout</a> <span class="sec">— Tech</span></li>
+          <li><a href="#tx-fwisd">Fort Worth ISD approves a ~$1.1B budget</a> <span class="sec">— Tarrant</span></li>
+          <li><a href="#tx-library">Fort Worth buys land for a new downtown library</a> <span class="sec">— Tarrant</span></li>
+          <li><a href="#tx-da">Tarrant DA moves to shut two "criminal hub" motels</a> <span class="sec">— Tarrant</span></li>
+          <li><a href="#wf-rail">Wichita Falls Railroad Museum reopens Saturday</a> <span class="sec">— Local</span></li>
+        </ul>
+      </div>
+      <div class="grp">
+        <div class="lbl u">↻ Updated since this morning</div>
+        <ul>
+          <li><a href="#b-micron">Micron's verdict is now hours away — after today's close</a> <span class="sec">— Business / Tech</span></li>
+          <li><a href="#f-stress">Fed stress-test results due 4 p.m. ET today</a> <span class="sec">— Finance</span></li>
+          <li><a href="#w-iaea">IAEA chief says inspectors will visit; Tehran balks</a> <span class="sec">— World</span></li>
+          <li><a href="#f-mortgage">30-year mortgage nudges up to ~6.58%</a> <span class="sec">— Personal Finance</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== NEWS: TWO COLUMNS ===== -->
+  <div class="columns">
+
+    <!-- ================= LEFT COLUMN ================= -->
+    <div class="col">
+
+      <!-- BUSINESS (top-left) -->
+      <section class="block">
+        <div class="blockhead"><svg class="ico" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2" fill="#2a6f97"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7" fill="none" stroke="#2a6f97" stroke-width="2"/><rect x="3" y="11" width="18" height="2" fill="#fff"/></svg><h2 class="display">Business</h2><span class="blockquip">📊 The chips caught their breath today — now the whole tape waits on one earnings card after the bell.</span></div>
+        <div class="item" id="b-bounce"><div class="withthumb"><div class="thumb-wrap"><svg class="thumb" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#e3f4ea"/><path d="M4 17l5-6 4 4 7-9" fill="none" stroke="#1a7f4b" stroke-width="2.2"/><path d="M16 6h4v4" fill="none" stroke="#1a7f4b" stroke-width="2.2"/></svg></div><div>
+          <div class="top"><span class="hl">📈 <a href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-june-24-2026" target="_blank" rel="noopener">Wall Street steadies — chips claw back after two ugly days</a></span><span class="badge-new">🆕 New</span><span class="pw free">🆓 Free</span></div>
+          <p>After Tuesday's chip-led rout, the tape exhaled Wednesday: the S&amp;P 500 edged up ~0.35%, the Nasdaq rose ~0.62% and the Russell 2000 added ~0.41%, while the Dow lagged slightly (-0.17%). The AI-memory names that got crushed (Micron, SanDisk, Western Digital) bounced as buyers stepped back in. It's a tentative truce, not an all-clear — because the real verdict lands after today's close.</p><div class="meta"><span class="src">TheStreet · CNBC · CNN Markets</span><span class="date today">Jun 24 · PM</span></div></div></div></div>
+        <div class="item" id="b-micron"><div class="withthumb"><div class="thumb-wrap"><svg class="thumb" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#ede7f5"/><rect x="7" y="7" width="10" height="10" rx="1.5" fill="#6a4c93"/><rect x="10" y="10" width="4" height="4" fill="#fff"/><g stroke="#6a4c93" stroke-width="1.4"><path d="M9 7V4M12 7V4M15 7V4M9 20v-3M12 20v-3M15 20v-3M7 9H4M7 12H4M7 15H4M20 9h-3M20 12h-3M20 15h-3"/></g></svg></div><div>
+          <div class="top"><span class="hl">🧠 <a href="https://finance.yahoo.com/markets/stocks/articles/micron-reports-earnings-june-24-215600703.html" target="_blank" rel="noopener">Micron's make-or-break print is now hours away</a></span><span class="badge-upd">↻ Updated</span><span class="pw free">🆓 Free</span></div>
+          <p>The market's biggest single read of the week drops after today's close (call at 2:30 p.m. MT): analysts model roughly $34.4–35.6B in fiscal-Q3 revenue (up ~270%) and EPS near $19.72 — up an eye-watering ~932% year-over-year — on record ~81% gross margins and HBM that's sold out through 2026. Price targets have essentially doubled or tripled in a month (Needham $1,550, UBS $1,625). The one number that decides it: the HBM revenue mix. A beat-and-raise calms the chip jitters; a cautious tone validates this week's selloff.</p><div class="meta"><span class="src">Yahoo Finance · TradingKey · IG · TheStreet</span><span class="date today">Jun 24</span></div></div></div></div>
+        <div class="item" id="b-housing"><div class="top"><span class="hl">🏠 <a href="https://www.npr.org/2026/06/23/nx-s1-5867575/congress-passes-housing-affordability-bill" target="_blank" rel="noopener">Biggest housing bill in a generation heads to Trump's desk</a></span><span class="pw free">🆓 Free</span></div>
+          <p>The "21st Century Road to Housing Act" cleared the House 358–32 (Senate 85–5) and now awaits the president's signature. Its 50+ provisions lean on supply: dropping the chassis requirement on manufactured homes (potentially $5K–10K cheaper), rewarding cities that build more, a small-dollar mortgage program, and barring institutional investors from owning more than 350 single-family homes. The first big federal housing law since the financial crisis.</p><div class="meta"><span class="src">NPR · TIME · CNN · Axios</span><span class="date">Jun 23</span></div></div>
+        <div class="item" id="b-qual"><div class="top"><span class="hl">🤝 <a href="https://www.techtimes.com/articles/318921/20260624/qualcomm-reportedly-nears-4-billion-modular-deal-attack-nvidia-software-moat.htm" target="_blank" rel="noopener">Qualcomm nears a ~$4B deal for AI-software firm Modular</a></span><span class="pw free">🆓 Free</span></div>
+          <p>Qualcomm is in advanced talks to buy Modular — maker of the Mojo language and MAX inference engine — in a bet to chip away at Nvidia's stickiest moat, its CUDA software. A deal could land within weeks. It caps a buying spree (Alphawave, Ventana) aimed at turning a mobile-chip maker into an AI-infrastructure player.</p><div class="meta"><span class="src">TechTimes · Edgen</span><span class="date today">Jun 24</span></div></div>
+        <div class="item"><div class="top"><span class="hl">⚛️ Energy Fuels to buy critical-minerals firm VAC for $1.9B</span></div>
+          <p>The uranium and rare-earths producer struck a cash-and-stock deal worth ~$1.9B, deepening America's push to onshore critical-minerals supply chains.</p><div class="meta"><span class="src">CNBC · Yahoo Finance</span><span class="date today">Jun 24</span></div></div>
+        <div class="item"><div class="top"><span class="hl">🛒 Amazon's June Prime Day winds down Friday</span></div>
+          <p>The four-day deal marathon — Amazon's first June Prime Day since 2021 — runs through Friday, with eMarketer eyeing ~$15.7B in US sales (+7% YoY). Shop the lightning deals while they last.</p><div class="meta"><span class="src">CNBC · eMarketer</span><span class="date">Jun 22</span></div></div>
+      </section>
+
+      <!-- FINANCE NEWS -->
+      <section class="block" id="finance">
+        <div class="blockhead"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#1a7f4b"/><path d="M12 6v12M9.2 9.2a2.8 2.2 0 0 1 5.6 0c0 1.4-1.3 1.9-2.8 2.3s-2.8.9-2.8 2.3a2.8 2.2 0 0 0 5.6 0" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg><h2 class="display">Finance</h2><span class="blockquip">💸 4 p.m. is the magic hour — the Fed grades the big banks, and the mortgage market won't quit creeping up.</span></div>
+        <div class="item" id="f-stress"><div class="top"><span class="hl">🏛️ <a href="https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260609a.htm" target="_blank" rel="noopener">Fed's 2026 bank stress-test results land at 4 p.m. ET today</a></span><span class="badge-upd">↻ Updated</span><span class="pw free">🆓 Free</span></div>
+          <p>Out within the hour: the Fed grades 32 of the largest US banks against a brutal hypothetical — 10% unemployment, a 30% home-price crash, a 39% commercial-real-estate drop. One wrinkle this year: the Fed says results won't change capital requirements (frozen until 2027 while it overhauls its models). Even so, a clean pass typically uncorks buyback and dividend announcements — watch JPMorgan, Goldman and the regionals for capital signals after the print.</p><div class="meta"><span class="src">Federal Reserve · Reuters · Quiver</span><span class="date today">Jun 24</span></div></div>
+        <div class="item"><div class="top"><span class="hl">📈 Treasury yields hold firm as the bond bid stays muted</span></div>
+          <p>With the Fed's dot plot leaning toward holds-or-hikes (year-end median ~3.8%), the 10-year is parked in the mid-4s and cash keeps paying. This week's stock wobble barely moved the safe-haven needle — markets read the chip rout as a tech story, not a macro scare.</p><div class="meta"><span class="src">Federal Reserve H.15 · Fidelity</span><span class="date today">Jun 24</span></div></div>
+        <div class="item"><div class="top"><span class="hl">🛢️ Iran/Hormuz risk keeps an inflation thumb on the scale</span></div>
+          <p>Energy is still the swing factor: with the ceasefire shaky and the Strait of Hormuz a live wire, an oil spike is the thing that could turn the Fed's "maybe a hike" chatter into action. For now, crude is the variable everyone's watching.</p><div class="meta"><span class="src">Federal Reserve · iShares</span><span class="date today">Jun 24</span></div></div>
+
+        <div class="subhead">💵 Personal Finance</div>
+        <div class="item" id="f-mortgage"><div class="top"><span class="hl">🏠 <a href="https://www.bankrate.com/mortgages/mortgage-rates/" target="_blank" rel="noopener">30-year mortgage nudges up to ~6.58% — stuck, not soaring</a></span><span class="badge-upd">↻ Updated</span><span class="pw free">🆓 Free</span></div>
+          <p>Today's 30-year fixed ticked higher again: Bankrate 6.58%, Optimal Blue/Fortune 6.51%, U.S. News 6.64%, with NerdWallet's best quotes lower. Rates are up from ~6.63% yesterday and economists still expect them above 6% for the rest of 2026. No relief rally, but no spike either — and the new housing bill is a supply play, not a rate cut.</p><div class="meta"><span class="src">Bankrate · Fortune · U.S. News · NerdWallet</span><span class="date today">Jun 24</span></div></div>
+        <div class="item"><div class="top"><span class="hl">💳 Card APRs near 19% — pay down before you invest</span></div>
+          <p>The average credit-card rate is still parked around 19%, the highest "guaranteed return" you can earn by knocking out a balance. Prime borrowers are fine; subprime delinquencies keep climbing — a reminder to watch your own utilization.</p><div class="meta"><span class="src">Bankrate · LendingTree</span><span class="date">Jun 2026</span></div></div>
+        <div class="item"><div class="top"><span class="hl">🏦 HYSAs still pay 4%+ — but the window may be closing</span></div>
+          <p>High-yield savings accounts are still offering north of 4% while big-bank accounts pay near zero — hundreds of dollars a year in free money. One caveat: forecasts suggest mid-4% yields may not last much past June, so lock in or ladder while they're here.</p><div class="meta"><span class="src">PrimeRates · Yahoo Finance</span><span class="date">Jun 2026</span></div></div>
+      </section>
+
+      <!-- WORLD (second row left) -->
+      <section class="block">
+        <div class="blockhead"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#2a6f97"/><path d="M2 12h20M12 2a16 16 0 0 1 0 20M12 2a16 16 0 0 0 0 20" stroke="#fff" stroke-width="1.3" fill="none"/></svg><h2 class="display">World</h2><span class="blockquip">🌐 A "war of words" over inspectors, a World Cup reckoning, and Ebola lands in France.</span></div>
+        <div class="item" id="w-iaea"><div class="top"><span class="hl">🇮🇷 <a href="https://www.washingtontimes.com/news/2026/jun/24/un-nuclear-chief-says-inspectors-visit-iran-sites-tehran-says-final/" target="_blank" rel="noopener">UN nuclear chief says inspectors will visit Iran — Tehran says not until a final deal</a></span><span class="badge-upd">↻ Updated</span><span class="pw free">🆓 Free</span></div>
+          <p>The IAEA's chief signaled inspectors would visit Iran's bombed enrichment sites — and an Iranian diplomat promptly rejected it, insisting any visit comes only after a final deal. Trump rebuffed Tehran's claim that nothing was scheduled, saying Iran already agreed. The IAEA head conceded the contradictions amount to a "war of words." Technical talks are expected to resume early next week in Switzerland, with Pakistan mediating.</p><div class="meta"><span class="src">Washington Times · NPR · CNN · PBS</span><span class="date today">Jun 24</span></div></div>
+        <div class="item" id="w-iran"><div class="top"><span class="hl">⚓ The ceasefire wobbles again as Hormuz briefly recloses</span><span class="badge-upd">↻ Updated</span></div>
+          <p>The uneasy truce got tested: Iran said it shut the Strait of Hormuz again amid Israel–Hezbollah fighting in Lebanon, before the US–Iran agreement cleared the way to evacuate 11,000+ stranded seafarers from the Gulf. Envoy Witkoff still wants enrichment fully halted; President Pezeshkian says Iran will "never back down." Two sides, two stories.</p><div class="meta"><span class="src">CNN · PBS · NPR · Al Jazeera</span><span class="date today">Jun 24</span></div></div>
+        <div class="item" id="w-wc"><div class="withthumb"><div class="thumb-wrap"><svg class="thumb" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#e7f1e8"/><circle cx="12" cy="12" r="7" fill="#fff" stroke="#1a7f4b" stroke-width="1.5"/><polygon points="12,8 14,11 12,14 10,11" fill="#15140f"/><path d="M12 5v2M17 10l-2 1M9 17l1-2M15 17l-1-2M7 10l2 1" stroke="#15140f" stroke-width="1.1"/></svg></div><div>
+          <div class="top"><span class="hl">⚽ <a href="https://www.local10.com/sports/2026/06/24/fifa-world-cup-2026-here-is-the-june-24-schedule-for-day-14-of-group-matches/" target="_blank" rel="noopener">World Cup: Groups A, B &amp; C settle tonight</a></span><span class="pw free">🆓 Free</span></div>
+          <p>Day 14's six final group matches decide who advances: Switzerland–Canada (Vancouver) and Bosnia–Qatar (Seattle) at 3 p.m. ET; Scotland–Brazil (Miami) and Morocco–Haiti (Atlanta) at 6 p.m.; host Mexico–Czechia at the Estadio Azteca and South Africa–South Korea (Monterrey) at 9 p.m. Mexico's the only Wednesday side that's already clinched. Top two per group plus the eight best third-placers move to the round of 32.</p><div class="meta"><span class="src">Local 10 · ESPN · FOX Sports · FIFA</span><span class="date today">Jun 24</span></div></div></div></div>
+        <div class="item"><div class="top"><span class="hl">🦠 <a href="https://www.france24.com/en/france/20260624-france-confirms-first-ebola-case-in-doctor-returning-from-dr-congo-mission" target="_blank" rel="noopener">France confirms its first Ebola case</a></span><span class="pw free">🆓 Free</span></div>
+          <p>A doctor returning from a mission in the DR Congo tested positive for Ebola — France's first-ever case. Health authorities are tracing contacts; the patient is isolated and being treated.</p><div class="meta"><span class="src">France 24</span><span class="date today">Jun 24</span></div></div>
+        <div class="item"><div class="top"><span class="hl">🇬🇧 Starmer out; Burnham wants the job</span></div>
+          <p>UK PM Keir Starmer stepped down after rival Andy Burnham won a Commons seat. Burnham has confirmed he'll run to replace him — Labour expects a new PM by September.</p><div class="meta"><span class="src">Morning Brew</span><span class="date">Jun 22</span></div></div>
+        <div class="item"><div class="top"><span class="hl">🇨🇳 China sanctions 10 US defense firms</span></div>
+          <p>Beijing retaliated after Washington barred some leading Chinese tech companies from US defense contracts — the tit-for-tat tech war grinds on.</p><div class="meta"><span class="src">NPR · AP</span><span class="date">Jun 22</span></div></div>
+      </section>
+
+      <!-- TEXAS -->
+      <section class="block">
+        <div class="blockhead"><svg class="ico" viewBox="0 0 24 24"><rect width="24" height="24" rx="3" fill="#bf2233"/><rect width="9" height="24" fill="#3a4ea0"/><polygon points="4.5,8 5.6,11 8.8,11 6.2,13 7.2,16 4.5,14.2 1.8,16 2.8,13 0.2,11 3.4,11" fill="#fff"/><rect x="9" width="15" height="12" fill="#fff"/></svg><h2 class="display">Texas</h2><span class="blockquip">🤠 Triple-digit heat, data-center pushback, and a Senate race with Texas-sized stakes.</span></div>
+        <div class="item"><div class="top"><span class="hl">🌡️ <a href="https://www.weather.gov/fwd/" target="_blank" rel="noopener">Hot &amp; humid statewide; afternoon storm chances up north</a></span><span class="pw free">🆓 Free</span></div>
+          <p>NWS Fort Worth has highs in the 90s with heat indices flirting with 100°+ across North Texas, and triple-digits settling into Texoma. Isolated strong storms are possible mainly along the Red River and northern counties. Hydrate, mind the pets, and keep an eye to the north.</p><div class="meta"><span class="src">NWS Fort Worth</span><span class="date today">Jun 24</span></div></div>
+        <div class="item"><div class="top"><span class="hl">⚡ <a href="https://www.texastribune.org/2026/06/17/texas-ercot-data-center-energy-grid/" target="_blank" rel="noopener">Texas regulators wrestle with data-center power demands</a></span><span class="pw free">🆓 Free</span></div>
+          <p>The PUC and ERCOT are ironing out new rules to streamline approvals for power-hungry data centers while shielding regular ratepayers — they owe Gov. Abbott a safeguards memo by July 17. The AI build-out is colliding with the grid (see Archer County's "no" below).</p><div class="meta"><span class="src">Texas Tribune · WFAA</span><span class="date">Jun 17</span></div></div>
+        <div class="item"><div class="top"><span class="hl">🗳️ Talarico vs. Paxton: the marquee Senate race heats up</span></div>
+          <p>Democrat James Talarico is touring the state as AG Ken Paxton — fresh off beating John Cornyn in the primary — pivots to November. One of 2026's most-watched contests.</p><div class="meta"><span class="src">NBC DFW</span><span class="date">Jun 22</span></div></div>
+        <div class="item"><div class="top"><span class="hl">🎣 3M Texans exposed in a license-system breach</span></div>
+          <p>A cyber incident tied to Texas Parks &amp; Wildlife's hunting/fishing license system may have exposed personal info for 3M+ holders — a good prompt to consider a credit freeze.</p><div class="meta"><span class="src">817 Biz</span><span class="date">Recent</span></div></div>
+        <div class="item"><div class="top"><span class="hl">🚗 Tesla autopilot crash into a Texas home renews the safety fight</span></div>
+          <p>Harris County officials say a Tesla in autopilot mode left the road and struck a house, killing a 76-year-old woman inside — fresh fuel for the driver-assist debate.</p><div class="meta"><span class="src">Fox News</span><span class="date">Jun 23</span></div></div>
+      </section>
+
+      <!-- WORTH A LOOK -->
+      <section class="block">
+        <div class="blockhead"><svg class="ico" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2" fill="#7a7a7a"/><rect x="5.5" y="7" width="7" height="5" fill="#fff"/><g stroke="#fff" stroke-width="1.3"><path d="M14 7.5h4M14 10h4M5.5 14h13M5.5 16.5h13"/></g></svg><h2 class="display">Worth a Look</h2><span class="blockquip">🔭 Sibling supernovae, a telescope reaches the Cape, and the longest tennis match ever — on this day.</span></div>
+        <div class="item"><div class="top"><span class="hl">☄️ Astronomers find the first pair of "sibling" supernova remnants</span></div>
+          <p>Scientists say the famous Jellyfish Nebula has a long-hidden twin — likely the first known pair of supernova remnants born from the same stellar family. A rare two-for-one in the cosmic fossil record, found in the glare of its brighter sibling.</p><div class="meta"><span class="src">ScienceDaily · Space.com</span><span class="date">Jun 2026</span></div></div>
+        <div class="item"><div class="top"><span class="hl">🌌 A galaxy's full fuel tank, 13 billion years back</span></div>
+          <p>Astronomers spotted a huge reservoir of cold molecular gas — the raw fuel for star formation — in REBELS-25, a massive galaxy seen when the universe was just ~700 million years old. It's earlier and more developed than models expected.</p><div class="meta"><span class="src">ScienceDaily</span><span class="date">Jun 2026</span></div></div>
+        <div class="item"><div class="top"><span class="hl">🛰️ Nancy Grace Roman telescope reaches Kennedy Space Center</span></div>
+          <p>NASA's next great observatory has arrived at the Cape for final launch prep — a wide-eyed cousin to Webb built to survey dark energy and hunt exoplanets.</p><div class="meta"><span class="src">NASA · Space.com</span><span class="date">Jun 2026</span></div></div>
+        <div class="item"><div class="top"><span class="hl">📡 SETI scans interstellar visitor 3I/ATLAS — and hears nothing</span></div>
+          <p>Scientists pointed radio telescopes at the third known interstellar object for any technological "hello." Result: only human-made interference. Comforting or disappointing, depending on your mood.</p><div class="meta"><span class="src">Universe Today</span><span class="date">Jun 2026</span></div></div>
+        <div class="item"><div class="top"><span class="hl">📅 On this day: Berlin Airlift, Sally Ride &amp; the longest match ever</span></div>
+          <p>1948: the Soviet blockade of West Berlin triggers the Berlin Airlift. 1983: Sally Ride lands aboard Challenger, completing her flight as the first American woman in space. 2010: John Isner outlasts Nicolas Mahut at Wimbledon in an 11-hour, 5-minute marathon — the longest tennis match in history. Also: Siam renamed itself Thailand in 1939.</p><div class="meta"><span class="src">Britannica · HISTORY</span><span class="date today">Jun 24</span></div></div>
+        <div class="item"><div class="top"><span class="hl">🍄 A box-office first: 2026 gets its billion-dollar movie</span></div>
+          <p>The Super Mario Galaxy Movie sits at ~$991.8M worldwide — about $8M short of a billion — and is poised to become 2026's first film to cross the line, maybe this weekend. The Michael Jackson biopic, meanwhile, is eyeing a record opening for a music biopic.</p><div class="meta"><span class="src">ComingSoon · Variety</span><span class="date">Jun 23</span></div></div>
+      </section>
+
+    </div><!-- /left -->
+
+    <!-- ================= RIGHT COLUMN ================= -->
+    <div class="col">
+
+      <!-- TECH (top-right) -->
+      <section class="block">
+        <div class="blockhead"><svg class="ico" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2" fill="#6a4c93"/><rect x="9" y="9" width="6" height="6" fill="#fff"/><g stroke="#6a4c93" stroke-width="1.5"><path d="M9 6V3M12 6V3M15 6V3M9 21v-3M12 21v-3M15 21v-3M6 9H3M6 12H3M6 15H3M21 9h-3M21 12h-3M21 15h-3"/></g></svg><h2 class="display">Tech &amp; AI</h2><span class="blockquip">💻 The panic cooled, the money keeps flowing — and Micron's number tonight resets the mood either way.</span></div>
+        <div class="item" id="t-oai"><div class="withthumb"><div class="thumb-wrap"><svg class="thumb" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#e3f4ea"/><circle cx="12" cy="12" r="6" fill="none" stroke="#1a7f4b" stroke-width="2"/><circle cx="12" cy="12" r="2" fill="#1a7f4b"/></svg></div><div>
+          <div class="top"><span class="hl">🤝 <a href="https://openai.com/index/openai-nvidia-systems-partnership/" target="_blank" rel="noopener">OpenAI &amp; Nvidia lock in 10 gigawatts — up to $100B</a></span><span class="badge-new">🆕 New</span><span class="pw free">🆓 Free</span></div>
+          <p>The single biggest tell of why a two-day chip dip looks like noise to AI believers: OpenAI and Nvidia signed a letter of intent to deploy at least 10 gigawatts of Nvidia systems — millions of GPUs — for OpenAI's next-gen buildout, with Nvidia investing up to $100B progressively as each gigawatt comes online. The first gigawatt lands in H2 2026 on the Vera Rubin platform. "Everything starts with compute," said Sam Altman.</p><div class="meta"><span class="src">OpenAI · Nvidia Newsroom</span><span class="date today">Jun 24</span></div></div></div></div>
+        <div class="item"><div class="withthumb"><div class="thumb-wrap"><svg class="thumb" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#e3f4ea"/><path d="M4 16l5-5 4 3 7-7" fill="none" stroke="#1a7f4b" stroke-width="2.2"/><path d="M16 7h4v4" fill="none" stroke="#1a7f4b" stroke-width="2.2"/></svg></div><div>
+          <div class="top"><span class="hl">🟢 <a href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-june-24-2026" target="_blank" rel="noopener">Chip stocks bounce as the AI-memory trade steadies</a></span><span class="badge-new">🆕 New</span><span class="pw free">🆓 Free</span></div>
+          <p>After leading the Nasdaq's 2.2% Tuesday drop, semis caught a bid Wednesday: Micron and the other AI-memory names recovered some ground as bulls treated the selloff as profit-taking, not a broken thesis. The all-clear, though, waits on tonight's Micron print — the timing puts enormous weight on the actual numbers.</p><div class="meta"><span class="src">TheStreet · Schwab · CNBC</span><span class="date today">Jun 24</span></div></div></div></div>
+        <div class="item"><div class="top"><span class="hl">🧠 Micron's blockbuster print is the market's pressure valve</span></div>
+          <p>Beyond the stock move, Micron's report is a read on the entire AI buildout: HBM is reportedly sold out into 2027 with HBM4 ramping for Nvidia. A beat-and-raise calms the sector; a cautious outlook validates this week's jitters.</p><div class="meta"><span class="src">IG · TradingKey</span><span class="date today">Jun 24</span></div></div>
+        <div class="item"><div class="top"><span class="hl">💻 Nvidia pushes AI down to the PC — and into "Vera" CPUs</span></div>
+          <p>Jensen Huang says Nvidia's new Vera data-center CPUs are in full production and "our new major growth driver," with Anthropic, OpenAI and others lined up on the Rubin platform. The strategy: own every layer of the AI stack, from the data center to your desktop.</p><div class="meta"><span class="src">CNBC · Al Jazeera</span><span class="date">Jun 2026</span></div></div>
+        <div class="item"><div class="top"><span class="hl">🛡️ Anthropic warns a Pentagon ban could cost it billions; Meta unveils new AI chips</span></div>
+          <p>Two threads in today's tech tape: Anthropic says being barred from some defense work could cost it billions, while Meta announced its next-generation in-house AI chips — the latest move by a hyperscaler to cut its Nvidia dependence.</p><div class="meta"><span class="src">Yahoo Finance · CNBC</span><span class="date today">Jun 24</span></div></div>
+        <div class="item"><div class="top"><span class="hl">🧪 NASA's Cold Atom Lab turns the ISS into a quantum frontier</span></div>
+          <p>An upgraded orbital lab is creating ultra-cold matter that behaves in ways impossible on Earth — research that could sharpen future sensors and quantum tech. Space: also a physics playground.</p><div class="meta"><span class="src">ScienceDaily</span><span class="date">Jun 2026</span></div></div>
+      </section>
+
+      <!-- NATIONAL (second row right) -->
+      <section class="block">
+        <div class="blockhead"><svg class="ico" viewBox="0 0 24 24"><rect width="24" height="24" rx="3" fill="#9c3a2e"/><rect y="3" width="24" height="3" fill="#fff"/><rect y="9" width="24" height="3" fill="#fff"/><rect y="15" width="24" height="3" fill="#fff"/><rect width="11" height="12" fill="#2a3f86"/></svg><h2 class="display">National</h2><span class="blockquip">🇺🇸 A SCOTUS sprint to the finish, an $80B war ask, and Mario at the box office.</span></div>
+        <div class="item"><div class="top"><span class="hl">⚖️ <a href="https://www.scotusblog.com/cases/trump-v-barbara/" target="_blank" rel="noopener">SCOTUS races to finish: birthright citizenship still pending</a></span><span class="badge-upd">↻ Updated</span><span class="pw free">🆓 Free</span></div>
+          <p>With the term ending in days, the justices still owe the marquee ruling — Trump v. Barbara, on the birthright-citizenship executive order — plus decisions on trans athletes, gun rights, and the president's power to fire independent-agency members. No birthright ruling yet as of midday; it's expected by early July. (The Court has already trimmed Trump's tariffs and weakened a Voting Rights Act tool.)</p><div class="meta"><span class="src">SCOTUSblog · CNN · CBS News</span><span class="date today">Jun 24</span></div></div>
+        <div class="item" id="n-pentagon"><div class="top"><span class="hl">💵 <a href="https://abcnews.com/US/wireStory/pentagon-seeks-80-billion-congress-iran-war-134116895" target="_blank" rel="noopener">Pentagon asks Congress for $80B to fund the Iran war</a></span><span class="pw free">🆓 Free</span></div>
+          <p>The Defense Department is seeking roughly $80 billion in supplemental funding tied to the conflict with Iran — replenishing munitions and operations even as Washington and Tehran spar over the ceasefire's terms. A big number that will test the bipartisan mood on Capitol Hill.</p><div class="meta"><span class="src">ABC News · AP</span><span class="date">Jun 23</span></div></div>
+        <div class="item"><div class="top"><span class="hl">🏦 Fed stress-test results double as a market catalyst</span></div>
+          <p>Today's bank stress-test verdict (4 p.m. ET) will move the financials — strong results typically unlock a wave of buyback and dividend announcements from the big banks in the days after.</p><div class="meta"><span class="src">Reuters · Quiver</span><span class="date today">Jun 24</span></div></div>
+        <div class="item"><div class="top"><span class="hl">🗳️ Judge blocks Trump's voter-citizenship database</span></div>
+          <p>A federal judge ruled the administration can't use a federal database to verify voters' citizenship, warning it risks wrongly purging actual citizens from the rolls.</p><div class="meta"><span class="src">Morning Brew</span><span class="date">Jun 22</span></div></div>
+        <div class="item"><div class="top"><span class="hl">🍿 Mario closes in on a billion at the box office</span></div>
+          <p>The Super Mario Galaxy Movie is ~$8M from $1B worldwide and should cross it imminently — the first film of 2026 to do so. Spider-Man: Brand New Day looms as July's blockbuster bet.</p><div class="meta"><span class="src">ComingSoon · Variety</span><span class="date">Jun 22</span></div></div>
+        <div class="item"><div class="top"><span class="hl">⛳ Wyndham Clark wins his second US Open</span></div>
+          <p>Clark held off Sam Burns and a hostile crowd at Shinnecock Hills to win at 4-under — a marquee weekend on the golf calendar.</p><div class="meta"><span class="src">Fox Sports</span><span class="date">Jun 21</span></div></div>
+      </section>
+
+      <!-- TARRANT -->
+      <section class="block">
+        <div class="blockhead"><svg class="ico" viewBox="0 0 24 24"><rect width="24" height="24" rx="3" fill="#3a7d7b"/><g fill="#fff"><rect x="4" y="11" width="4" height="9"/><rect x="10" y="7" width="4" height="13"/><rect x="16" y="13" width="4" height="7"/></g></svg><h2 class="display">Tarrant County</h2><span class="blockquip">🏗️ A billion-dollar school budget, a new library, a crackdown on crime motels — and a fire's aftermath.</span></div>
+        <div class="item" id="tx-fwisd"><div class="top"><span class="hl">🎓 <a href="https://fortworthreport.org/" target="_blank" rel="noopener">Fort Worth ISD approves a ~$1.1B budget despite a shortfall spike</a></span><span class="badge-new">🆕 New</span><span class="pw free">🆓 Free</span></div>
+          <p>FWISD trustees adopted a nearly $1.1 billion budget that leaders say will fund academic-improvement efforts even as the district stares down a widening deficit. The vote sets spending for the coming year — and comes amid earlier pushback over program and staffing cuts, including the International Newcomer Academy.</p><div class="meta"><span class="src">Fort Worth Report</span><span class="date today">Jun 24</span></div></div>
+        <div class="item" id="tx-library"><div class="top"><span class="hl">📚 <a href="https://www.fortworthtexas.gov/departments/library/services/downtown" target="_blank" rel="noopener">Fort Worth buys land for a new downtown library</a></span><span class="badge-new">🆕 New</span><span class="pw free">🆓 Free</span></div>
+          <p>City Council approved a $5.95M purchase of 1.38 acres downtown for a future central library — a concrete step in long-running plans to give downtown a modern flagship branch.</p><div class="meta"><span class="src">Fort Worth Report</span><span class="date today">Jun 24</span></div></div>
+        <div class="item" id="tx-da"><div class="top"><span class="hl">🚔 <a href="https://fortworthreport.org/" target="_blank" rel="noopener">Tarrant DA moves to shut two south Fort Worth motels</a></span><span class="badge-new">🆕 New</span><span class="pw free">🆓 Free</span></div>
+          <p>DA Phil Sorrells is pushing to close two south Fort Worth motels he calls "hubs of criminal activity," citing repeated police calls. Separately, Benjamin Song was convicted of attempted murder for shooting and wounding an Alvarado officer during a demonstration last July.</p><div class="meta"><span class="src">Fort Worth Report · FOX 4</span><span class="date today">Jun 24</span></div></div>
+        <div class="item" id="tx-fire"><div class="top"><span class="hl">🔥 <a href="https://www.cbsnews.com/texas/news/large-fire-southeast-fort-worth-tarrant-county-6-23-2026/" target="_blank" rel="noopener">Cause sought after fire destroys a SE Fort Worth building</a></span><span class="pw free">🆓 Free</span></div>
+          <p>Crews battled a major blaze that erupted around 11:20 a.m. Tuesday along Forest Hill Circle near I-20 and Loop 287, southeast of Fort Worth. The CBS Texas chopper caught flames and billowing smoke; the structure was destroyed and the cause remains under investigation.</p><div class="meta"><span class="src">CBS Texas · FOX 4</span><span class="date">Jun 23</span></div></div>
+        <div class="item"><div class="top"><span class="hl">⚽ World Cup summer keeps remaking Tarrant neighborhoods</span></div>
+          <p>From fan zones to small-business booms, Arlington's AT&amp;T Stadium matches are reshaping local life. Trinity Metro's $10 shuttle (through Jul 12) ferries fans around the traffic — Jordan vs. Argentina lands Saturday.</p><div class="meta"><span class="src">Fort Worth Report</span><span class="date">This week</span></div></div>
+        <div class="item"><div class="top"><span class="datechip wknd">Sat Jun 27</span><span class="hl">🏳️‍🌈 Trinity Pride Fest returns to South Main</span></div>
+          <p>After last year's cancellation amid an Arlington ordinance fight, Tarrant's Pride scene is back on Fort Worth's South Main this Saturday.</p><span class="src">FTWtoday</span></div>
+      </section>
+
+      <!-- EVENTS -->
+      <section class="block">
+        <div class="blockhead"><svg class="ico" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" fill="#d4862a"/><rect x="3" y="5" width="18" height="5" fill="#a8641a"/><rect x="7" y="3" width="2" height="4" rx="1" fill="#7a4a12"/><rect x="15" y="3" width="2" height="4" rx="1" fill="#7a4a12"/><g fill="#fff"><rect x="6" y="12" width="3" height="3"/><rect x="11" y="12" width="3" height="3"/><rect x="16" y="12" width="2" height="3"/></g></svg><h2 class="display">Events</h2><span class="blockquip">📅 A Summer Nights finale, World Cup soccer, Pride, prog-rock royalty, and a rodeo.</span></div>
+        <div class="subhead">📍 In Keller</div>
+        <div class="item"><div class="top"><span class="datechip soon">Thu Jun 25</span><span class="hl">🎵 <a href="https://www.cityofkeller.com/services/parks-recreation/parks-recreation-special-events/keller-summer-nights" target="_blank" rel="noopener">Keller Summer Nights finale — One Headlight</a></span><span class="pw free">🆓 Free</span></div>
+          <p>The season's last Summer Nights: One Headlight plays Keller Town Hall at 7:30 p.m., movie under the stars at dusk, food trucks &amp; vendors on-site. Bring a blanket.</p></div>
+        <div class="item"><div class="top"><span class="datechip">Ongoing</span><span class="hl">🎣 <a href="https://communityimpact.com/dallas-fort-worth/keller-roanoke-northeast-fort-worth/events/" target="_blank" rel="noopener">Free catfish fishing behind Town Hall</a></span><span class="pw free">🆓 Free</span></div>
+          <p>The pond behind Keller Town Hall is stocked all month — free for anglers 16 and under.</p></div>
+        <div class="subhead">🌆 Fort Worth &amp; DFW</div>
+        <div class="item"><div class="top"><span class="datechip wknd">Fri Jun 26</span><span class="hl">🎸 Scotty McCreery at Billy Bob's</span></div>
+          <p>Country headliner takes the world's largest honky-tonk, 10 p.m.</p></div>
+        <div class="item"><div class="top"><span class="datechip wknd">Sat Jun 27</span><span class="hl">⚽ World Cup: Jordan vs. Argentina — AT&amp;T Stadium</span></div>
+          <p>Group-stage showdown in Arlington, 10 p.m. — Messi-watch fully engaged on home turf.</p></div>
+        <div class="item"><div class="top"><span class="datechip wknd">Sat Jun 27</span><span class="hl">🌈 Trinity Pride Fest — South Main</span></div>
+          <p>The South Main District lights up with Pride from 6 p.m. in Fort Worth.</p></div>
+        <div class="item"><div class="top"><span class="datechip wknd">Sun Jun 28</span><span class="hl">🥁 RUSH: Fifty Something Tour — Dickies Arena</span></div>
+          <p>Prog-rock legends, 7:30 p.m. — one of the summer's biggest arena gets.</p></div>
+        <div class="item"><div class="top"><span class="datechip wknd">Sun Jun 28</span><span class="hl">🏀 Dallas Wings vs. Minnesota Lynx</span></div>
+          <p>WNBA afternoon hoops at College Park Center, Arlington, 1 p.m.</p></div>
+        <div class="item"><div class="top"><span class="datechip wknd">Sun Jun 28</span><span class="hl">🤠 Stockyards Championship Rodeo + 🎻 Candlelight at the Botanic Garden</span></div>
+          <p>Cowtown Coliseum rodeo at 1:30 p.m.; or trade boots for strings with Candlelight: The Best of Hans Zimmer (5:30 p.m.) at the Fort Worth Botanic Garden.</p></div>
+        <div class="subhead" style="margin-top:8px;">🗓️ Plan ahead</div>
+        <div class="item"><div class="top"><span class="hl">Full event calendars</span></div>
+          <p><a href="https://www.cityofkeller.com/visitors/city-calendar/community-calendar" target="_blank" rel="noopener">City of Keller</a> · <a href="https://www.fortworth.com/events/" target="_blank" rel="noopener">fortworth.com/events</a> · <a href="https://fortworth.events/june/" target="_blank" rel="noopener">FortWorth.events</a> · <a href="https://fortworth.culturemap.com/" target="_blank" rel="noopener">CultureMap picks</a></p>
+          <span class="src">City of Keller · Community Impact · FTWtoday · Fort Worth CVB</span></div>
+      </section>
+
+      <!-- LOCAL (Keller · Bend · Wichita Falls) -->
+      <section class="block" id="local">
+        <div class="blockhead"><svg class="ico" viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5 7 13 7 13s7-8 7-13c0-3.9-3.1-7-7-7z" fill="#9c3a2e"/><circle cx="12" cy="9" r="2.6" fill="#fff"/></svg><h2 class="display">Local</h2><span class="blockquip">📍 Hometown desks: Keller, plus Bend, OR and Wichita Falls, TX.</span></div>
+
+        <div class="subhead">🤠 Keller, TX</div>
+        <div class="item"><div class="top"><span class="hl">🏛️ <a href="https://communityimpact.com/dallas-fort-worth/keller-roanoke-northeast-fort-worth/government/2026/06/04/4-highlights-from-the-june-2-keller-city-council-meeting/" target="_blank" rel="noopener">Council weighs a new trash contract as the current deal expires</a></span><span class="pw free">🆓 Free</span></div>
+          <p>Keller's solid-waste contract expires Sept. 1, with two finalists in the running and an award expected this summer — plus ongoing Keller Hicks Road railroad-crossing work (tabled to July 7). Shannon Dubberly was named Mayor Pro Tem at the June 2 meeting.</p><div class="meta"><span class="src">Community Impact</span><span class="date">Jun 2</span></div></div>
+        <div class="item"><div class="top"><span class="hl">🗳️ <a href="https://communityimpact.com/dallas-fort-worth/keller-roanoke-northeast-fort-worth/government/2026/05/02/updated-whatley-randklev-win-keller-city-council-seats-place-4-heads-to-runoff/" target="_blank" rel="noopener">Place 4 runoff settled; council weighs home-based-business rules</a></span><span class="pw free">🆓 Free</span></div>
+          <p>The June 13 runoff capped Keller's election season (Whatley and Randklev won outright in May), and the council is continuing work to tighten rules on home-based businesses after neighbor complaints. Old Town office permits remain before P&amp;Z.</p><div class="meta"><span class="src">Community Impact · Fort Worth Report</span><span class="date">Jun 13</span></div></div>
+
+        <div class="subhead">⛰️ Bend, OR</div>
+        <div class="item"><div class="top"><span class="hl">🔥 <a href="https://www.bendsource.com/category/news/localnews/" target="_blank" rel="noopener">Bend adopts a "Climate Pollution Fee" on new gas hookups</a></span><span class="pw free">🆓 Free</span></div>
+          <p>The City Council voted 5-1 to charge developers a fee for installing natural-gas systems in new homes — making Bend the second Oregon city to do so. A push to cut building emissions; critics worry about cost pass-through to buyers.</p><div class="meta"><span class="src">The Source Weekly</span><span class="date">Jun 3</span></div></div>
+        <div class="item"><div class="top"><span class="hl">🏙️ New City Hall? Pilot Butte site looks most feasible</span></div>
+          <p>A new analysis flags property near Pilot Butte as the most workable spot for a future Bend City Hall — though councilors still hope to anchor it closer to the Bend Central District downtown.</p><div class="meta"><span class="src">The Source Weekly</span><span class="date">This week</span></div></div>
+
+        <div class="subhead">🌊 Wichita Falls, TX</div>
+        <div class="item" id="wf-rail"><div class="top"><span class="hl">🚂 <a href="https://www.texomashomepage.com/" target="_blank" rel="noopener">Railroad Museum reopens Saturday after four years</a></span><span class="badge-new">🆕 New</span><span class="pw free">🆓 Free</span></div>
+          <p>The Wichita Falls Railroad Museum celebrates its grand reopening Saturday after being shuttered for four years. Meanwhile, the city is launching flood studies of two trouble spots — East Plum Creek and the Wichita River — and the Sikes Center Mall redevelopment keeps advancing.</p><div class="meta"><span class="src">Texomas Homepage · News Channel 6 / KAUZ</span><span class="date today">Jun 24</span></div></div>
+        <div class="item"><div class="top"><span class="hl">🖥️ Nearby Archer County rejects a data-center tax break</span></div>
+          <p>Archer County commissioners voted unanimously against a proposed tax abatement for a planned data center after a packed, skeptical Commissioners Court — echoing a statewide fight over data centers and the grid.</p><div class="meta"><span class="src">News Channel 6 / KAUZ</span><span class="date">Jun 22</span></div></div>
+      </section>
+
+    </div><!-- /right -->
+
+  </div><!-- /columns -->
+
+  <footer>
+    <div class="sources">📥 <b>Today's sources:</b> Morning Brew · 817 Biz · FTWtoday (6AM City) · The Texas Flyover · Community Impact (Keller) · Nextdoor · AP News · Google News · CNBC · TheStreet · Schwab · NBC News · NPR · CNN · CBS News · Fox · ABC News · ESPN · FOX Sports · Local 10 · TechTimes · OpenAI / Nvidia · Yahoo Finance · Variety · ScienceDaily / Space.com / Universe Today · Fort Worth Report · Federal Reserve · Reuters · Washington Times · PBS · TIME · Axios · Bankrate · Fortune · U.S. News · NerdWallet · PrimeRates (Finance) · The Source Weekly / Central Oregon Daily (Bend) · Texomas Homepage · News Channel 6 / KAUZ (Wichita Falls) · NWS Fort Worth + the open web. Stories appearing in several are merged into one entry.</div>
+    <div><b>How this works.</b> 🔁 <b>Deduplicated</b> — stories appearing in several outlets are merged into one entry. 📅 <b>Dated</b> — each headline carries the date its news broke so you can spot anything stale at a glance (<span class="date today" style="margin:0;">green</span> = today, <span class="date soon" style="margin:0;">amber</span> = upcoming). 📈🌤️ <b>Live data</b> — the Markets and Weather panels stream current numbers from your browser every time you open this page, no rebuild needed; News is rebuilt automatically each morning &amp; afternoon. <span class="pw free" style="margin:0;">🆓 Free</span> / <span class="pw pay" style="margin:0;">🔒 Subscription</span> — every link is badged, with a free alternative offered whenever the best source is paywalled. <span class="badge-new" style="margin:0;">🆕 New</span> / <span class="badge-upd" style="margin:0;">↻ Updated</span> — items added or changed since the earlier brief are flagged, and the <b>"New this edition"</b> box up top links straight to them so you can skim only what's changed.</div>
+    <div style="margin-top:7px; color:#a09a8c;">Generated for Kevin · Afternoon edition, 3:30 p.m. CT · Optimized for a 1920×1200 display in Edge · Tap any underlined headline to read more.</div>
+  </footer>
+
+</div>
+</body>
+</html>
