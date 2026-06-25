@@ -123,26 +123,18 @@
     </div>
   </header>
 
-  <!-- LIVE MARKETS -->
+  <!-- MARKETS + BY THE NUMBERS (static quotes refresh on each page reload) -->
   <div class="striphead">
     <svg class="ico" viewBox="0 0 24 24"><rect x="3" y="13" width="4" height="8" fill="#1a7f4b"/><rect x="10" y="8" width="4" height="13" fill="#2a6f97"/><rect x="17" y="4" width="4" height="17" fill="#6a4c93"/></svg>
-    <h2 class="display">Markets — Live</h2><a class="more" href="https://www.cnbc.com/markets/" target="_blank" rel="noopener">↗ full markets</a>
+    <h2 class="display">Markets &amp; By the Numbers — Live</h2><a class="more" href="https://www.cnbc.com/markets/" target="_blank" rel="noopener">↗ full markets</a>
   </div>
   <div class="widgetbox">
-    <div class="tradingview-widget-container">
-      <div class="tradingview-widget-container__widget"><div class="wfallback">📈 Live ticker loads in your browser — <a href="https://www.cnbc.com/markets/" target="_blank" rel="noopener">open CNBC Markets ↗</a></div></div>
-      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-      {"symbols":[{"proName":"FOREXCOM:SPXUSD","title":"S&P 500"},{"proName":"FOREXCOM:NSXUSD","title":"Nasdaq 100"},{"proName":"FOREXCOM:DJI","title":"Dow"},{"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},{"proName":"TVC:USOIL","title":"Oil WTI"},{"proName":"TVC:GOLD","title":"Gold"}],"showSymbolLogo":true,"isTransparent":true,"displayMode":"adaptive","colorTheme":"light","locale":"en"}
+    <div class="tradingview-widget-container" style="margin-bottom:9px;">
+      <div class="tradingview-widget-container__widget"><div class="wfallback">📈 Live quotes load in your browser — <a href="https://www.cnbc.com/markets/" target="_blank" rel="noopener">open CNBC Markets ↗</a></div></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js" async>
+      {"symbols":[{"proName":"FOREXCOM:DJI","title":"Dow"},{"proName":"FOREXCOM:SPXUSD","title":"S&P 500"},{"proName":"FOREXCOM:NSXUSD","title":"Nasdaq 100"},{"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},{"proName":"TVC:USOIL","title":"Oil WTI"},{"proName":"TVC:GOLD","title":"Gold"}],"isTransparent":true,"showSymbolLogo":true,"colorTheme":"light","locale":"en"}
       </script>
     </div>
-  </div>
-
-  <!-- BY THE NUMBERS — evergreen rates/metrics (refreshed each build) -->
-  <div class="striphead">
-    <svg class="ico" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2" fill="#1a7f4b"/><g fill="#fff" font-family="monospace"><rect x="6" y="7" width="5" height="2"/><rect x="6" y="11" width="8" height="2"/><rect x="6" y="15" width="6" height="2"/></g><rect x="15" y="7" width="3" height="10" fill="#bfe3cd"/></svg>
-    <h2 class="display">By the Numbers</h2><a class="more" href="https://www.bankrate.com/" target="_blank" rel="noopener">↗ rate trackers</a>
-  </div>
-  <div class="widgetbox">
     <div class="numrow">
       <div class="numcard"><div class="numlbl">30-Yr Mortgage</div><div class="numval">~6.50%</div><div class="numnote">↓ ~5 bps wk · drifting lower</div></div>
       <div class="numcard"><div class="numlbl">Top HYSA APY</div><div class="numval">up to 5.00%</div><div class="numnote">vs 0.38% national avg</div></div>
@@ -152,7 +144,7 @@
       <div class="numcard"><div class="numlbl">Unemployment</div><div class="numval">4.3%</div><div class="numnote">May · steady 4.3–4.5%</div></div>
       <div class="numcard"><div class="numlbl">Inflation (CPI)</div><div class="numval">4.2%</div><div class="numnote">May YoY · energy-driven</div></div>
     </div>
-    <div class="numcap">💹 Live S&amp;P, Nasdaq, Dow, Bitcoin, Oil &amp; Gold stream in the <b>Markets</b> ticker above. Rates here are refreshed each build — <a href="https://www.bankrate.com/mortgages/mortgage-rates/" target="_blank" rel="noopener">Bankrate</a> · <a href="https://fortune.com/article/current-mortgage-rates-06-25-2026/" target="_blank" rel="noopener">Fortune</a>.</div>
+    <div class="numcap">💹 The market quotes above refresh every time you reload this page (live via your browser; some feeds may lag ~10–15 min). The rate tiles are re-checked at each build — <a href="https://www.cnbc.com/markets/" target="_blank" rel="noopener">CNBC Markets</a> · <a href="https://www.bankrate.com/mortgages/mortgage-rates/" target="_blank" rel="noopener">Bankrate</a>.</div>
   </div>
 
   <!-- LIVE WEATHER -->
@@ -455,4 +447,10 @@
         <div class="subhead">🌊 Wichita Falls, TX</div>
         <div class="item" id="wf-rail"><div class="top"><span class="hl">🚂 <a href="https://www.texomashomepage.com/" target="_blank" rel="noopener">Railroad Museum reopens Saturday after four years</a></span><span class="pw free">🆓 Free</span></div>
           <p>The Wichita Falls Railroad Museum celebrates its grand reopening Saturday after being shuttered for four years. Nearby, Archer County commissioners voted unanimously against a data-center tax abatement after a packed, skeptical Commissioners Court — echoing the statewide grid fight.</p><div class="meta"><span class="src">Texomas Homepage · News Channel 6 / KAUZ</span><span class="date">Jun 22</span></div></div>
-        <div class="item" id="wf-sheriff"><div class="top"><span class="hl">👮 <a href="https://www.newschannel6now.com/" target="_blank" rel="noopener">Sheriff Laughery to retire July 31; flood studies advance</a></span><span cl
+        <div class="item" id="wf-sheriff"><div class="top"><span class="hl">👮 <a href="https://www.newschannel6now.com/" target="_blank" rel="noopener">Sheriff Laughery to retire July 31; flood studies advance</a></span><span class="pw free">🆓 Free</span></div>
+          <p>Wichita County Sheriff Laughery's last day will be Friday, July 31, setting up a leadership transition. Elsewhere, the city is pressing ahead with flood studies of East Plum Creek and the Wichita River, the Sikes Center Mall redevelopment is advancing, and the summer concert series rolls on Tuesday evenings.</p><div class="meta"><span class="src">News Channel 6 / KAUZ · Texomas Homepage</span><span class="date">Jun 23</span></div></div>
+      </section>
+
+    </div><!-- /right -->
+
+  </div>
