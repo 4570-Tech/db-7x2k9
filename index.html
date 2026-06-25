@@ -40,10 +40,11 @@
   .wxtemp{ font-size:15px; font-weight:800; }
   .wxdesc{ font-size:9.5px; color:#6b6860; line-height:1.2; margin-top:1px; }
   .wxpop{ font-size:9.5px; color:#2a6f97; font-weight:700; margin-top:1px; }
+  .wxhi{ color:#c0392b; } .wxlo{ color:#2a6f97; }
 
   /* By the Numbers — evergreen rates/metrics strip */
-  .numrow{ display:flex; gap:7px; flex-wrap:wrap; }
-  .numcard{ flex:1 1 0; min-width:118px; background:#f6faf7; border:1px solid #d7e7dd; border-radius:9px; padding:6px 9px 7px; }
+  .numrow{ display:flex; gap:7px; flex-wrap:nowrap; overflow-x:auto; }
+  .numcard{ flex:1 1 0; min-width:96px; background:#f6faf7; border:1px solid #d7e7dd; border-radius:9px; padding:6px 9px 7px; }
   .numlbl{ font-size:9.5px; font-weight:800; color:#1a7f4b; text-transform:uppercase; letter-spacing:.3px; }
   .numval{ font-size:17px; font-weight:800; line-height:1.15; }
   .numnote{ font-size:9.5px; color:#6b6860; margin-top:1px; }
@@ -148,6 +149,8 @@
       <div class="numcard"><div class="numlbl">Avg Card APR</div><div class="numval">~19%</div><div class="numnote">your best "guaranteed return"</div></div>
       <div class="numcard"><div class="numlbl">Fed Funds Target</div><div class="numval">3.50–3.75%</div><div class="numnote">4th hold · hike risk by Oct</div></div>
       <div class="numcard"><div class="numlbl">10-Yr Treasury</div><div class="numval">~4.4%</div><div class="numnote">parked in the mid-4s</div></div>
+      <div class="numcard"><div class="numlbl">Unemployment</div><div class="numval">4.3%</div><div class="numnote">May · steady 4.3–4.5%</div></div>
+      <div class="numcard"><div class="numlbl">Inflation (CPI)</div><div class="numval">4.2%</div><div class="numnote">May YoY · energy-driven</div></div>
     </div>
     <div class="numcap">💹 Live S&amp;P, Nasdaq, Dow, Bitcoin, Oil &amp; Gold stream in the <b>Markets</b> ticker above. Rates here are refreshed each build — <a href="https://www.bankrate.com/mortgages/mortgage-rates/" target="_blank" rel="noopener">Bankrate</a> · <a href="https://fortune.com/article/current-mortgage-rates-06-25-2026/" target="_blank" rel="noopener">Fortune</a>.</div>
   </div>
@@ -181,15 +184,31 @@
       .then(function(p){return fetch(p.properties.forecast);})
       .then(function(r){return r.json();})
       .then(function(f){
-        var per=(f.properties.periods||[]).slice(0,6);
+        var per=(f.properties.periods||[]);
         if(!per.length) throw new Error('no periods');
-        box.innerHTML=per.map(function(x){
-          var pop=(x.probabilityOfPrecipitation&&x.probabilityOfPrecipitation.value)||0;
-          var name=x.name.replace('This ','').replace('Overnight','Tonight');
-          return '<div class="wxcard"><div class="wxname">'+name+'</div>'+
-            '<div class="wxemoji">'+emoji(x.shortForecast,x.isDaytime)+'</div>'+
-            '<div class="wxtemp">'+x.temperature+'°'+x.temperatureUnit+'</div>'+
-            '<div class="wxdesc">'+x.shortForecast+'</div>'+
+        // group day + night periods into one block per calendar date
+        var days=[], map={};
+        per.forEach(function(x){
+          var d=x.startTime.slice(0,10);
+          if(!map[d]){ map[d]={}; days.push(map[d]); }
+          if(x.isDaytime){ map[d].day=x; } else { map[d].night=x; }
+        });
+        days=days.slice(0,7);
+        var dow=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+        box.innerHTML=days.map(function(g,i){
+          var ref=g.day||g.night;
+          var label=(i===0)?'Today':dow[new Date(ref.startTime).getDay()];
+          var hi=g.day?g.day.temperature:null, lo=g.night?g.night.temperature:null;
+          var sf=ref.shortForecast, isDay=!!g.day;
+          var pop=Math.max((g.day&&g.day.probabilityOfPrecipitation&&g.day.probabilityOfPrecipitation.value)||0,
+                           (g.night&&g.night.probabilityOfPrecipitation&&g.night.probabilityOfPrecipitation.value)||0);
+          var temps=(hi!=null?'<span class="wxhi">'+hi+'°</span>':'')+
+                    (hi!=null&&lo!=null?' / ':'')+
+                    (lo!=null?'<span class="wxlo">'+lo+'°</span>':'');
+          return '<div class="wxcard"><div class="wxname">'+label+'</div>'+
+            '<div class="wxemoji">'+emoji(sf,isDay)+'</div>'+
+            '<div class="wxtemp">'+temps+'</div>'+
+            '<div class="wxdesc">'+sf+'</div>'+
             (pop>=15?'<div class="wxpop">💧 '+pop+'%</div>':'')+'</div>';
         }).join('');
       })
@@ -436,13 +455,4 @@
         <div class="subhead">🌊 Wichita Falls, TX</div>
         <div class="item" id="wf-rail"><div class="top"><span class="hl">🚂 <a href="https://www.texomashomepage.com/" target="_blank" rel="noopener">Railroad Museum reopens Saturday after four years</a></span><span class="pw free">🆓 Free</span></div>
           <p>The Wichita Falls Railroad Museum celebrates its grand reopening Saturday after being shuttered for four years. Nearby, Archer County commissioners voted unanimously against a data-center tax abatement after a packed, skeptical Commissioners Court — echoing the statewide grid fight.</p><div class="meta"><span class="src">Texomas Homepage · News Channel 6 / KAUZ</span><span class="date">Jun 22</span></div></div>
-        <div class="item" id="wf-sheriff"><div class="top"><span class="hl">👮 <a href="https://www.newschannel6now.com/" target="_blank" rel="noopener">Sheriff Laughery to retire July 31; flood studies advance</a></span><span class="pw free">🆓 Free</span></div>
-          <p>Wichita County Sheriff Laughery's last day will be Friday, July 31, setting up a leadership transition. Elsewhere, the city is pressing ahead with flood studies of East Plum Creek and the Wichita River, the Sikes Center Mall redevelopment is advancing, and the summer concert series rolls on Tuesday evenings.</p><div class="meta"><span class="src">News Channel 6 / KAUZ · Texomas Homepage</span><span class="date">Jun 23</span></div></div>
-      </section>
-
-    </div><!-- /right -->
-
-  </div><!-- /columns -->
-
-  <footer>
-    <div class="sources">📥 <b>Today's sources:</b> Morning Brew · 817 Biz · FTWtoday (6AM City) · The Texas Flyover · Community Impact (Keller; Grapevine-Colleyville-Southlake) · Nextdoor · AP News · Google News · CNBC · TheStreet · Investing.com · Bloomberg · Bloomberg Law · NBC News · NPR · CNN · CBS News · The Hill · ABC News · Just Security · ESPN · Yahoo Sports · FIFA · TechTimes · GovTech · Route Fifty · Texas DIR · OpenAI / Nvidia · Anthropic · Yahoo Finance · Variety · ScienceDaily / Space.com / Universe Today · Fort Worth Report · KERA · Federal Reserve · U.S. Bank · Reuters · Was
+        <div class="item" id="wf-sheriff"><div class="top"><span class="hl">👮 <a href="https://www.newschannel6now.com/" target="_blank" rel="noopener">Sheriff Laughery to retire July 31; flood studies advance</a></span><span cl
