@@ -47,6 +47,8 @@
   .numnote{ font-size:9.5px; color:#6b6860; margin-top:1px; }
   .numcap{ font-size:11px; color:#6b6860; padding:5px 3px 1px; }
   .numcap a{ color:#2a6f97; }
+  .numval .numdir{ font-size:10px; font-weight:800; vertical-align:middle; margin-left:3px; }
+  .numdir.up{ color:#c0392b; } .numdir.down{ color:#1a7f4b; } .numdir.flat{ color:#a89e8b; }
   .rundown{ background:#fff; border:1px solid #e2ddd0; border-left:5px solid #b8472b; border-radius:12px; padding:11px 18px 12px; margin-top:6px; }
   .rundown .intro{ font-size:15px; color:#33312b; margin:0 0 9px; line-height:1.5; }
   .rundown .intro b{ color:#15140f; }
@@ -108,76 +110,98 @@
 </head>
 <body>
   <div class="wrap">
-  <header class="masthead">
-    <svg class="hero" viewBox="0 0 1200 50" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A city skyline with a rising market line at dawn — markets lead">
-      <defs><linearGradient id="skyMkt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe1a8"/><stop offset="0.55" stop-color="#f2a96a"/><stop offset="1" stop-color="#d9744f"/></linearGradient></defs>
-      <rect width="1200" height="50" fill="url(#skyMkt)"/>
-      <g fill="#5e3026" opacity="0.85"><rect x="60" y="24" width="20" height="26"/><rect x="86" y="16" width="24" height="34"/><rect x="116" y="28" width="18" height="22"/><rect x="900" y="22" width="20" height="28"/><rect x="926" y="14" width="22" height="36"/><rect x="1040" y="26" width="18" height="24"/><rect x="1064" y="18" width="22" height="32"/></g>
-      <polyline points="150,40 260,32 360,36 470,24 600,28 740,16 880,20 1010,8" fill="none" stroke="#1a7f4b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
-      <polygon points="1010,8 1000,14 1018,16" fill="#1a7f4b"/>
-      <g transform="translate(470,15)"><path d="M3 8 h26 v8 a9 9 0 0 1 -9 9 h-8 a9 9 0 0 1 -9 -9 z" fill="#3b2a22"/><path d="M29 11 h4 a4 4 0 0 1 0 9 h-4" fill="none" stroke="#3b2a22" stroke-width="3"/><path d="M9 3 q3 -3 0 -7 M16 3 q3 -3 0 -7 M23 3 q3 -3 0 -7" stroke="#fff" stroke-width="2" fill="none" opacity="0.8"/></g>
-    </svg>
-    <div class="brandrow">
-      <div class="brand display">Kevin's <span class="accent">Daily Brief</span></div>
-      <div class="dateline">Tuesday, June 30, 2026 &middot; Morning Edition &middot; Keller, TX &middot; ~6-min read</div>
-    </div>
-  </header>
-  <div class="rundown">
-    <p class="intro">&#9728;&#65039; <b>Good morning, Kevin.</b> Wall Street partied into the record books &mdash; the Dow closed above <b>52,000</b> for the first time ever &mdash; and now the Supreme Court takes center stage, dropping its final opinions of the term this morning with <b>birthright citizenship</b> headlining. Brazil needed a 95th-minute miracle to survive Japan, Germany and the Netherlands went out on penalties, and a New Jersey emu enjoyed a two-week taste of freedom before its capture. Pour the coffee &mdash; here's Tuesday.</p>
-    <div class="rcols">
-      <div class="rgrp">
-        <div class="rlbl">&#128240; The Rundown</div>
-        <ul>
-          <li>&#128202; <a href="#lead">The Dow tops 52,000 for the first time as tech roars back</a></li>
-          <li>&#9878;&#65039; <a href="#n-scotus">SCOTUS hands down its final opinions today &mdash; birthright citizenship included</a></li>
-          <li>&#9917; <a href="#sp-wc">Brazil survives Japan in stoppage time; Germany &amp; Netherlands fall on PKs</a></li>
-          <li>&#127967;&#65039; <a href="#sp-wctoday">World Cup at AT&amp;T Stadium today: Ivory Coast vs. Norway</a></li>
-          <li>&#129516; <a href="#t-chipwar">Everyone from OpenAI to SpaceX is now building their own chips</a></li>
-          <li>&#129460; <a href="#cu-emu">A New Jersey emu is caught after two weeks on the lam</a></li>
-        </ul>
-      </div>
-      <div class="rgrp">
-        <div class="rlbl n">&#127381; New &amp; Updated this edition</div>
-        <ul>
-          <li><span class="badge-new" style="margin:0 4px 0 0;">New</span><a href="#lead">Dow 52,000</a> &middot; <a href="#bm-jobs">jobs week</a> &middot; <a href="#t-swift">NASA's Swift rescue</a> &middot; <a href="#tx-bible">Texas Bible reading list</a></li>
-          <li><span class="badge-new" style="margin:0 4px 0 0;">New</span><a href="#n-ice">$70B border bill signed</a> &middot; <a href="#w-venezuela">Venezuela quake toll</a> &middot; <a href="#sp-golf">John Deere week</a></li>
-          <li><span class="badge-upd" style="margin:0 4px 0 0;">Upd</span><a href="#n-scotus">Decision day is here</a> &middot; <a href="#sp-wc">World Cup Round of 32</a> &middot; <a href="#ae-box">box-office finals</a></li>
-          <li><span class="badge-upd" style="margin:0 4px 0 0;">Upd</span><a href="#w-doha">Doha talks in doubt</a> &middot; <a href="#ae-dutton">Dutton Ranch finale Friday</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="lead" id="lead">
-    <div class="tag">&#11088; Today's Lead &middot; Business</div>
-    <h2><a href="https://finance.yahoo.com/markets/stocks/live/stock-market-today-monday-june-29-224230573.html" target="_blank" rel="noopener">The Dow closes above 52,000 for the first time as a tech-led rally sends Wall Street to records</a></h2>
-    <p>Wall Street roared into the history books Monday: the <b>Dow Jones Industrial Average</b> closed above <b>52,000 for the first time ever</b>, while the <b>S&amp;P 500</b> rose about <b>1.2%</b> and the tech-heavy <b>Nasdaq jumped roughly 2%</b>, powered by <b>Alphabet</b> and the rest of the megacap-tech crowd. The spark: relief that the Supreme Court left Fed Governor <b>Lisa Cook</b> in place, plus a US&ndash;Iran stand-down that cooled oil. Futures point modestly higher again this morning. But the celebration faces a test &mdash; the all-important <b>June jobs report lands Thursday</b> (markets are closed Friday for the Fourth), the 10-year Treasury still yields about <b>4.38%</b>, and a freshly widened goods-trade gap is a reminder the backdrop isn't all blue sky. <a class="finish" href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-june-30-2026" target="_blank" rel="noopener">Finish reading at TheStreet &#8594;</a></p>
-    <div class="meta"><span class="src">Yahoo Finance &middot; TheStreet &middot; Schwab &middot; CNN Markets</span><span class="date today">Jun 30</span></div>
-  </div>
-  <div class="striphead">
-    <svg class="ico" viewBox="0 0 24 24"><rect x="3" y="13" width="4" height="8" fill="#1a7f4b"/><rect x="10" y="8" width="4" height="13" fill="#2a6f97"/><rect x="17" y="4" width="4" height="17" fill="#6a4c93"/></svg>
-    <h2 class="display">Markets &amp; Weather &mdash; Live</h2><a class="more" href="https://www.cnbc.com/markets/" target="_blank" rel="noopener">&#8599; full markets</a>
-  </div>
-  <div class="widgetbox">
-    <div class="tradingview-widget-container" style="margin-bottom:9px;">
-      <div class="tradingview-widget-container__widget"><div class="wfallback">&#128200; Live quotes load in your browser &mdash; <a href="https://www.cnbc.com/markets/" target="_blank" rel="noopener">open CNBC Markets &#8599;</a></div></div>
+<!-- civic hero: Capitol dome at dawn -->
+<svg class="hero" viewBox="0 0 1200 50" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Capitol dome at dawn — national politics lead">
+  <defs><linearGradient id="skyCivic" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dfe6f2"/><stop offset="0.55" stop-color="#f0bd8a"/><stop offset="1" stop-color="#d97a6a"/></linearGradient></defs>
+  <rect width="1200" height="50" fill="url(#skyCivic)"/>
+  <g fill="#bf2233" opacity="0.16"><rect y="6" width="1200" height="6"/><rect y="20" width="1200" height="6"/><rect y="34" width="1200" height="6"/></g>
+  <g transform="translate(584,6)" fill="#efeae0" stroke="#b9b3a4" stroke-width="0.8"><rect x="2" y="40" width="60" height="4"/><rect x="8" y="28" width="48" height="12"/><g stroke="#b9b3a4" stroke-width="1"><path d="M14 28 V40 M22 28 V40 M32 28 V40 M42 28 V40 M50 28 V40"/></g><path d="M18 28 Q32 6 46 28 Z"/><rect x="30" y="14" width="4" height="6"/><circle cx="32" cy="12" r="2"/></g>
+  <g transform="translate(470,15)"><path d="M3 8 h26 v8 a9 9 0 0 1 -9 9 h-8 a9 9 0 0 1 -9 -9 z" fill="#3b2a22"/><path d="M29 11 h4 a4 4 0 0 1 0 9 h-4" fill="none" stroke="#3b2a22" stroke-width="3"/><path d="M9 3 q3 -3 0 -7 M16 3 q3 -3 0 -7 M23 3 q3 -3 0 -7" stroke="#fff" stroke-width="2" fill="none" opacity="0.8"/></g>
+</svg>
+<div class="masthead">
+  <div class="masttitle">Kevin's Daily Brief</div>
+  <div class="mastdate">Wednesday, July 1, 2026 &nbsp;·&nbsp; Morning Edition ☕</div>
+</div>
+<!-- THE RUNDOWN -->
+<div class="section full rundown" id="rundown">
+  <div class="sec-head">☀️ Good Morning, Kevin — The Rundown</div>
+  <p style="margin:0 0 0.6em">Happy July 1st — we're three days from the 250th and the nation has a lot going on. Here's what you need before the coffee kicks in.</p>
+  <ul class="quickhits">
+    <li>🏛️ <b>Court rules:</b> Supreme Court ends deportation protections for hundreds of thousands of Haitians &amp; Syrians, and blesses the border "metering" policy — <a href="#lead">full story ↓</a></li>
+    <li>⚽ <b>USMNT tonight:</b> USA vs. Bosnia-Herzegovina, 8 PM CT at Levi's Stadium — win and it's the Round of 16. <a href="#wc-usmnt">More ↓</a></li>
+    <li>🌡️ <b>Heat wave:</b> A dangerous heat dome is baking the eastern half of the country, with heat indexes topping 105° in DFW today. <a href="#heatwave">More ↓</a></li>
+    <li>🤖 <b>$6.3B AI deal kicks in:</b> SpaceX's Colossus 2 begins serving Reflection AI today at $150M/month — the biggest single compute contract in history. <a href="#spacex-ai">More ↓</a></li>
+    <li>📊 <b>Q2 in the books:</b> Wall Street just closed its best quarter in years. Markets open muted as triple economic data drops this morning. <a href="#q2-stocks">More ↓</a></li>
+    <li>🎬 <b>Sheridan earthquake:</b> Taylor Sheridan is reportedly leaving Paramount for a $1 billion NBCUniversal deal starting 2029 — while his spinoffs are still breaking records. <a href="#sheridan-nbc">More ↓</a></li>
+  </ul>
+  <div class="new-updated"><b>🆕 New / Updated this edition:</b> Supreme Court TPS ruling · USMNT Round of 32 · SpaceX-Reflection AI deal · July 4th DFW event guide · Dutton Ranch finale countdown · Oregon minimum wage hike (July 1)</div>
+</div>
+<!-- LEAD STORY -->
+<div class="section full lead" id="lead">
+  <div class="sec-label">Today's Lead · Nation &amp; World</div>
+  <div class="sec-head">🏛️ Supreme Court Hands Trump Two Landmark Immigration Victories</div>
+  <span class="badge-new">NEW</span>
+  <div class="meta" style="text-align:right">July 1, 2026</div>
+  <p>The Supreme Court issued a pair of sweeping immigration rulings Tuesday that green-light two of the administration's most aggressive enforcement moves. In the first, a 6-3 majority allowed the White House to end <b>Temporary Protected Status</b> for hundreds of thousands of Haitians and Syrians — clearing the path to deportation for a population that has lived and worked legally in the U.S. for years. The court said a provision in the TPS statute bars courts from reviewing the Secretary's designation decisions entirely, handing the executive branch nearly unchecked authority over the program.</p>
+  <p>In the second ruling, the Court blessed the administration's border "metering" practice — capping how many asylum seekers can present themselves at ports of entry each day. Writing for the majority, the Court drew a line between migrants who physically step onto U.S. soil (who retain the right to seek asylum) and those turned back before crossing, arguing the statute requires one to "arrive in" rather than merely "arrive at" the country. The dissenting justices called it a "word-game" that guts asylum law in practice.</p>
+  <p>Unless Congress acts to grant TPS holders permanent status, hundreds of thousands of people now face loss of work authorization and risk of removal — a humanitarian and legal challenge advocates say will play out in courts and communities for years. <a href="https://www.americanimmigrationcouncil.org/blog/supreme-court-immigration-ruling-tps-asylum-seekers/" target="_blank">Finish reading → (Free)</a></p>
+</div>
+<!-- MARKETS & WEATHER -->
+<div class="section full widgetbox" id="markets">
+  <div class="sec-head">📈 Markets &amp; Weather</div>
+  <!-- TradingView tickers -->
+  <div class="tv-widget">
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
       <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js" async>
-      {"symbols":[{"proName":"FOREXCOM:DJI","title":"Dow"},{"proName":"FOREXCOM:SPXUSD","title":"S&P 500"},{"proName":"FOREXCOM:NSXUSD","title":"Nasdaq 100"},{"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},{"proName":"TVC:USOIL","title":"Oil WTI"},{"proName":"TVC:GOLD","title":"Gold"}],"isTransparent":true,"showSymbolLogo":true,"colorTheme":"light","locale":"en"}
+      {"symbols":[{"proName":"FOREXCOM:SPXUSD","title":"S&P 500"},{"proName":"FOREXCOM:NSXUSD","title":"Nasdaq 100"},{"proName":"TVC:DJI","title":"Dow Jones"},{"proName":"TVC:GOLD","title":"Gold"},{"proName":"TVC:USOIL","title":"Crude Oil"},{"description":"US 10Y","proName":"TVC:US10Y"},{"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"}],"colorTheme":"light","isTransparent":true,"showSymbolLogo":true,"locale":"en"}
       </script>
     </div>
-    <div class="numrow">
-      <div class="numcard"><div class="numlbl">30-Yr Mortgage</div><div class="numval">~6.49%</div><div class="numnote">Freddie Mac &middot; wk of Jun 25</div></div>
-      <div class="numcard"><div class="numlbl">Top HYSA APY</div><div class="numval">up to ~5.0%</div><div class="numnote">vs 0.38% national avg</div></div>
-      <div class="numcard"><div class="numlbl">Avg Card APR</div><div class="numval">~19%</div><div class="numnote">your best "guaranteed return"</div></div>
-      <div class="numcard"><div class="numlbl">Fed Funds Target</div><div class="numval">3.50&ndash;3.75%</div><div class="numnote">on hold &middot; next Jul 29</div></div>
-      <div class="numcard"><div class="numlbl">10-Yr Treasury</div><div class="numval">~4.38%</div><div class="numnote">firm into jobs week</div></div>
-      <div class="numcard"><div class="numlbl">Unemployment</div><div class="numval">4.3%</div><div class="numnote">May &middot; payrolls Thu Jul 2</div></div>
-      <div class="numcard"><div class="numlbl">Gas (US avg)</div><div class="numval">~$3.86</div><div class="numnote">easing &middot; off ~$4.50 May peak</div></div>
-    </div>
-    <div class="numcap">&#128178; Quotes refresh on each page reload; rate tiles re-check each build. <b>These seven numbers live here only</b> &mdash; the Finance desk covers what to <i>do</i> about them. <a href="https://www.cnbc.com/markets/" target="_blank" rel="noopener">CNBC</a> &middot; <a href="https://gasprices.aaa.com/" target="_blank" rel="noopener">AAA</a>.</div>
-    <div class="wxdiv"></div>
-    <div class="wxhead"><span class="t">&#127780;&#65039; Keller 7-Day Forecast</span><a href="https://forecast.weather.gov/MapClick.php?lat=32.9346&amp;lon=-97.2517" target="_blank" rel="noopener">&#8599; full forecast (76248)</a></div>
-    <div id="wxcards" class="wxrow"><div class="wfallback">&#127780;&#65039; Loading live Keller forecast&hellip;</div></div>
   </div>
+  <!-- By the Numbers -->
+  <div class="numrow">
+    <div class="numtile">
+      <div class="numlbl">30-Yr Mortgage</div>
+      <div class="numval">~6.55% <span class="numdir up" title="+0.06 vs last build">&#9650;</span></div>
+      <div class="numsrc"><a href="https://money.usnews.com/loans/mortgages/articles/mortgage-rates-today-june-30-2026" target="_blank">U.S. News</a></div>
+    </div>
+    <div class="numtile">
+      <div class="numlbl">Top HYSA APY</div>
+      <div class="numval">4.15% <span class="numdir down" title="-0.85 vs last build">&#9660;</span></div>
+      <div class="numsrc"><a href="https://www.bankrate.com/banking/savings/best-high-yield-interests-savings-accounts/" target="_blank">Bankrate</a></div>
+    </div>
+    <div class="numtile">
+      <div class="numlbl">Avg Card APR</div>
+      <div class="numval">19.57% <span class="numdir up" title="+0.57 vs last build">&#9650;</span></div>
+      <div class="numsrc"><a href="https://www.bankrate.com/credit-cards/advice/current-interest-rates/" target="_blank">Bankrate</a></div>
+    </div>
+    <div class="numtile">
+      <div class="numlbl">Fed Funds Target</div>
+      <div class="numval">3.625% <span class="numdir flat" title="no change vs last build">&ndash;</span></div>
+      <div class="numsrc">FOMC</div>
+    </div>
+    <div class="numtile">
+      <div class="numlbl">10-Yr Treasury</div>
+      <div class="numval">~4.38% <span class="numdir flat" title="no change vs last build">&ndash;</span></div>
+      <div class="numsrc">TradingView</div>
+    </div>
+    <div class="numtile">
+      <div class="numlbl">Unemployment</div>
+      <div class="numval">4.3% <span class="numdir flat" title="no change vs last build">&ndash;</span></div>
+      <div class="numsrc"><a href="https://www.bls.gov/news.release/empsit.nr0.htm" target="_blank">BLS May 2026</a></div>
+    </div>
+    <div class="numtile">
+      <div class="numlbl">Gas (US avg)</div>
+      <div class="numval">~$3.72 <span class="numdir down" title="-0.14 vs last build">&#9660;</span></div>
+      <div class="numsrc">GasBuddy est.</div>
+    </div>
+  </div>
+  <div class="numcap">&#9650;/&#9660; = vs last build. Arrows are direction only, not good/bad.</div>
+  <hr style="margin:0.8em 0;border:none;border-top:1px solid #ddd"/>
+  <!-- Weather -->
+  <div class="wx-head">🌤️ Keller, TX Forecast — <a href="https://forecast.weather.gov/MapClick.php?lat=32.9346&lon=-97.2517" target="_blank">full forecast (Keller / 76248)</a></div>
+  <div id="wxcards" class="wxcards"><!-- populated by weather.js --></div>
+</div>
   <script>
   (function(){
     function emoji(t, day){
@@ -231,167 +255,392 @@
       });
   })();
   </script>
-  <div class="grid2">
-    <section class="block">
-      <div class="blockhead"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#1a7f4b"/><path d="M12 6v12M9.2 9.2a2.8 2.2 0 0 1 5.6 0c0 1.4-1.3 1.9-2.8 2.3s-2.8.9-2.8 2.3a2.8 2.2 0 0 0 5.6 0" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg><h2 class="display">Business &amp; Money</h2><span class="blockquip">&#128176; The Dow makes history, jobs day looms Thursday, and a wave of new rules hits July 1.</span></div>
-      <div class="subhead">&#128202; Markets &amp; Business</div>
-      <div class="item" id="bm-jobs"><div class="top"><span class="hl">&#128197; <a href="https://www.schwab.com/learn/story/stock-market-update-open" target="_blank" rel="noopener">A holiday-shortened week hinges on Thursday's jobs report &mdash; then markets shut for the Fourth</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>After Monday's records, the week pivots to data: the June <b>nonfarm-payrolls</b> report &mdash; the Fed's favorite tea leaves &mdash; drops <b>Thursday, July 2</b>, with the NYSE <b>closed Friday</b> for Independence Day. A soft number would revive rate-cut hopes; a hot one could cool the party. Expect thin, jumpy trading as desks empty out early.</p><div class="meta"><span class="src">Schwab &middot; CNBC</span><span class="date today">Jun 30</span></div></div>
-      <div class="item" id="bm-alphabet"><div class="top"><span class="hl">&#128081; <a href="https://finance.yahoo.com/markets/stocks/articles/us-stock-market-today-p-081551494.html" target="_blank" rel="noopener">Alphabet leads a megacap-tech charge that drags the averages to fresh highs</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>The bounce had a clear ringleader: <b>Alphabet</b> jumped as investors piled back into the biggest tech names, flipping June's "who pays for all these data centers?" worry into a buy-the-dip stampede. It's a vivid reminder that this market's mood can swing from gloom to euphoria in a single session.</p><div class="meta"><span class="src">Yahoo Finance &middot; TheStreet</span><span class="date today">Jun 30</span></div></div>
-      <div class="item" id="bm-trade"><div class="top"><span class="hl">&#128230; <a href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-june-30-2026" target="_blank" rel="noopener">A widening goods-trade gap is the cloud on an otherwise sunny tape</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>The US <b>goods-trade deficit widened to $105.8 billion</b>, with more imports and fewer exports &mdash; a drag that can weigh on manufacturers and exporters and nibble at GDP math even as stocks make new highs. One more data point for a Fed trying to read a mixed economy.</p><div class="meta"><span class="src">TheStreet &middot; Census/BEA</span><span class="date today">Jun 30</span></div></div>
-      <div class="subhead">&#128181; Personal Finance &mdash; <span style="font-weight:600;text-transform:none;letter-spacing:0;color:#6b6860;">what to do, not what the rates are</span></div>
-      <div class="item" id="pf-july1"><div class="top"><span class="hl">&#128221; <a href="https://library.nclc.org/article/new-consumer-law-changes-taking-effect-2026" target="_blank" rel="noopener">A batch of consumer rules kicks in July 1 &mdash; a 10-minute checkup pays off</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>New laws landing <b>July 1</b> include stronger <b>auto-renewal</b> reminder requirements, expanded <b>right-to-repair</b> for appliances and electronics, and (in some states) a mortgage <b>assumption</b> option in divorce. Translation: audit your recurring subscriptions this week, and if you've been told a gadget "can't be fixed," check again. Boring housekeeping, real savings.</p><div class="meta"><span class="src">NCLC &middot; Woods Rogers</span><span class="date today">Jun 30</span></div></div>
-      <div class="item" id="pf-utility"><div class="top"><span class="hl">&#10052;&#65039; <a href="https://www.energy.gov/energysaver/spring-and-summer-energy-saving-tips" target="_blank" rel="noopener">With a heat dome parked overhead, a few tweaks can tame the summer electric bill</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>As dangerous heat blankets much of the country, cooling costs are about to spike. The cheap wins: nudge the thermostat up a few degrees when you're out (a smart or programmable one pays for itself), run ceiling fans counter-clockwise, close blinds on the sunny side, and check that your AC filter is clean. Comfort and a smaller bill aren't mutually exclusive.</p><div class="meta"><span class="src">Energy.gov &middot; Brief desk</span><span class="date today">Jun 30</span></div></div>
-      <div class="item" id="pf-cut"><div class="top"><span class="hl">&#9202;&#65039; <a href="https://www.bankrate.com/banking/savings/best-high-yield-interests-savings-accounts/" target="_blank" rel="noopener">Don't budget around a rate cut that hasn't happened &mdash; lock in what works now</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>Thursday's jobs print could nudge the rate-cut timeline either way, so don't reorganize your money around a cut that may slip. The durable move: park the emergency fund in a <b>~5% high-yield savings</b> or short CD <i>today</i>, and if a mortgage or auto rate already makes your math work, take it and refinance later if cuts arrive.</p><div class="meta"><span class="src">Bankrate &middot; CNBC Select</span><span class="date today">Jun 30</span></div></div>
-    </section>
-    <section class="block">
-      <div class="blockhead"><svg class="ico" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2" fill="#6a4c93"/><rect x="9" y="9" width="6" height="6" fill="#fff"/><g stroke="#6a4c93" stroke-width="1.5"><path d="M9 6V3M12 6V3M15 6V3M9 21v-3M12 21v-3M15 21v-3M6 9H3M6 12H3M6 15H3M21 9h-3M21 12h-3M21 15h-3"/></g></svg><h2 class="display">Tech, AI &amp; Science</h2><span class="blockquip">&#128640; The chip rebellion goes mainstream, Lucy meets a peanut, and Mars hid Earth-like plumbing.</span></div>
-      <div class="subhead">&#128187; Tech &amp; AI</div>
-      <div class="item" id="t-chipwar"><div class="top"><span class="hl">&#129516; <a href="https://techcrunch.com/video/why-everyone-from-openai-to-spacex-is-building-their-own-chips-and-turning-up-the-heat-on-nvidia/" target="_blank" rel="noopener">Why everyone from OpenAI to SpaceX is now building their own chips &mdash; and turning up the heat on Nvidia</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>The week's big-picture tech story: custom silicon is no longer a side project. With OpenAI's <b>Jalape&ntilde;o</b> claiming roughly <b>half the inference cost</b> of today's GPUs, and Google, Apple and SpaceX all rolling their own, the industry is racing to cut its dependence on a single supplier. The open question hanging over <b>Nvidia</b>: what happens to its inference business when its biggest customers design around it?</p><div class="meta"><span class="src">TechCrunch &middot; CNN Business</span><span class="date today">Jun 30</span></div></div>
-      <div class="item" id="t-meta"><div class="top"><span class="hl">&#127981; <a href="https://elpasomatters.org/2026/06/09/meta-data-center-deal-to-remain-el-paso-city-council-rejects-terminating-agreement/" target="_blank" rel="noopener">El Paso keeps Meta's $10 billion AI data center on track as the council rejects pulling out</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>The Texas AI build-out marches on: El Paso's City Council voted down an effort to <b>terminate its agreement</b> with <b>Meta</b>, whose data-center investment there has ballooned from $1.5B to <b>$10 billion</b> and a planned <b>1 gigawatt</b> by 2028. The fight over water, power and jobs is the local face of the national compute arms race.</p><div class="meta"><span class="src">El Paso Matters</span><span class="date">Jun 2026</span></div></div>
-      <div class="item" id="t-qualcomm"><div class="top"><span class="hl">&#128295; <a href="https://www.distillintelligence.com/briefings/semiconductors-ai-chips-2026-06-26" target="_blank" rel="noopener">Chip-world shuffle: Qualcomm scoops up Modular as TSMC signals price hikes</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>The dealmaking around AI silicon keeps churning: <b>Qualcomm</b> moved to acquire AI-software startup <b>Modular</b>, while foundry king <b>TSMC</b> telegraphed <b>price increases</b> &mdash; a cost that ripples to everyone building the next generation of accelerators. The picks-and-shovels layer of the AI boom is where a lot of the money is quietly being made.</p><div class="meta"><span class="src">Distill Intelligence</span><span class="date">Jun 26</span></div></div>
-      <div class="subhead">&#128300; Science</div>
-      <div class="item" id="t-swift"><div class="top"><span class="hl">&#128752;&#65039; <a href="https://www.space.com/space-exploration/launches-spacecraft/nasa-to-launch-ambitious-mission-to-save-a-space-telescope-from-burning-up-in-earths-atmosphere" target="_blank" rel="noopener">NASA launches a first-of-its-kind robot rescue today to save its falling Swift telescope</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>In a daring <b>$30 million</b> first, a robot spacecraft called <b>LINK</b> &mdash; built by Arizona's Katalyst Space &mdash; launches <b>today</b> on the final-ever <b>Pegasus XL</b> to grapple NASA's aging <b>Swift</b> observatory (no engines of its own) and tow it to a safe orbit before it falls into the atmosphere by October. The first time a private craft has tried to catch an uncrewed US government satellite.</p><div class="meta"><span class="src">Space.com &middot; NASA</span><span class="date today">Jun 30</span></div></div>
-      <div class="item" id="t-mars"><div class="top"><span class="hl">&#128293; <a href="https://www.ox.ac.uk/news/2026-06-24-new-evidence-suggests-vast-hidden-magma-systems-inside-mars" target="_blank" rel="noopener">Mars once ran on Earth-like plumbing: evidence of vast hidden magma systems &mdash; without plate tectonics</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>Using seismic data from NASA's <b>InSight</b> lander, Oxford researchers (publishing in <b>Nature Astronomy</b>) found that early <b>Mars</b> hosted broad, vertically integrated <b>magma systems</b> like Earth's &mdash; despite lacking plate tectonics. The kicker: complex, potentially life-friendly crusts may form on more worlds than scientists assumed.</p><div class="meta"><span class="src">University of Oxford &middot; ScienceDaily</span><span class="date">Jun 24</span></div></div>
-      <div class="item" id="t-juno"><div class="top"><span class="hl">&#127775; <a href="https://science.nasa.gov/blogs/science-news/2026/06/03/nasas-juno-reveals-new-insights-into-cosmic-ray-origins/" target="_blank" rel="noopener">NASA's Juno turns up new clues about where cosmic rays come from</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>Jupiter orbiter <b>Juno</b> has delivered fresh insight into the origins of <b>cosmic rays</b> &mdash; the high-energy particles that constantly zip through the solar system. Better understanding where they come from helps protect both astronauts and spacecraft electronics on the long trips ahead.</p><div class="meta"><span class="src">NASA Science</span><span class="date">Jun 2026</span></div></div>
-    </section>
-    <section class="block">
-      <div class="blockhead"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#2a6f97"/><path d="M2 12h20M12 2a16 16 0 0 1 0 20M12 2a16 16 0 0 0 0 20" stroke="#fff" stroke-width="1.3" fill="none"/></svg><h2 class="display">World &amp; Nation</h2><span class="blockquip">&#127760; Doha is in doubt, Venezuela digs out, and the Court clears its desk this morning.</span></div>
-      <div class="subhead">&#127758; World</div>
-      <div class="item" id="w-doha"><div class="top"><span class="hl">&#127465;&#127480; <a href="https://www.aljazeera.com/news/2026/6/30/are-us-and-iranian-negotiators-meeting-in-doha-what-we-know-about-talks" target="_blank" rel="noopener">Those Doha talks? Iran says they're not happening &mdash; even as a stand-down holds</a></span><span class="badge-upd">&#8635; Updated</span><span class="pw free">&#127379; Free</span></div>
-        <p><b>What changed:</b> the meeting is now in doubt. Trump says Iran "requested" technical talks in Doha and is sending son-in-law <b>Jared Kushner</b> and envoy <b>Steve Witkoff</b>, but Tehran's negotiators flatly deny any negotiations are scheduled &mdash; insisting a technical delegation in Qatar has "no relation" to the Americans. The weekend ceasefire is holding; the diplomacy is murkier.</p><div class="meta"><span class="src">Al Jazeera &middot; NBC News &middot; CNN</span><span class="date today">Jun 30</span></div></div>
-      <div class="item" id="w-venezuela"><div class="top"><span class="hl">&#127470;&#127472; <a href="https://www.aljazeera.com/news/2026/6/29/aftershock-hits-caracas-during-critical-hours-for-venezuela-rescue-efforts" target="_blank" rel="noopener">Venezuela's quake toll climbs past 1,700 as rescuers race the clock in Caracas</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>Officials say at least <b>1,719 people</b> were killed and more than <b>5,000 injured</b> by the twin quakes &mdash; a magnitude 7.2 followed seconds later by a 7.5 &mdash; that flattened buildings near the coast and in <b>Caracas</b>. With thousands still missing and aftershocks rattling the capital, the window for finding survivors is closing.</p><div class="meta"><span class="src">Al Jazeera &middot; NBC News</span><span class="date today">Jun 30</span></div></div>
-      <div class="item" id="w-heat"><div class="top"><span class="hl">&#127777;&#65039; <a href="https://www.aljazeera.com/news/2026/6/28/european-heatwave-causes-1000-excess-deaths-in-france" target="_blank" rel="noopener">Europe's brutal heatwave turns deadly &mdash; 1,300+ excess deaths, France hardest hit</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>The WHO counts more than <b>1,300 excess deaths</b> across Europe since June 21, with France alone reporting around <b>1,000</b> &mdash; most among the elderly. As record temperatures shatter benchmarks across the continent, officials warn the toll will rise as data from homes and care facilities comes in.</p><div class="meta"><span class="src">Al Jazeera &middot; Euronews &middot; WHO</span><span class="date">Jun 28</span></div></div>
-      <div class="item" id="w-safrica"><div class="top"><span class="hl">&#127831; <a href="https://www.enca.com/news-top-stories-videos/live-coverage-30june-anti-migration-protests" target="_blank" rel="noopener">Thousands march across South Africa in nationwide "#30June" anti-migration protests</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>Several groups led <b>anti-illegal-immigration</b> demonstrations across South Africa today, demanding tougher action on undocumented migrants. The marches &mdash; spanning multiple cities &mdash; spotlight a tension that has simmered for years across the country's strained labor market.</p><div class="meta"><span class="src">eNCA</span><span class="date today">Jun 30</span></div></div>
-      <div class="subhead">&#127482;&#127480; Nation</div>
-      <div class="item" id="n-scotus"><div class="top"><span class="hl">&#9878;&#65039; <a href="https://thehill.com/regulation/court-battles/5945644-supreme-court-birthright-citizenship-transgender-athletes/" target="_blank" rel="noopener">Decision day: the Court hands down its final opinions today &mdash; birthright citizenship, trans athletes, campaign finance</a></span><span class="badge-upd">&#8635; Updated</span><span class="pw free">&#127379; Free</span></div>
-        <p><b>What changed:</b> it's here. The justices are expected to release the term's <b>last three blockbusters</b> this morning: <b>Trump v. Barbara</b> on birthright citizenship (the 6&ndash;3 court is widely expected to rule against the order, though maybe on narrow grounds), a case on state bans of <b>transgender athletes</b> in girls' sports, and a GOP bid to loosen <b>campaign-finance</b> limits. Set the coffee timer for ~9 a.m. CT.</p><div class="meta"><span class="src">The Hill &middot; SCOTUSblog &middot; NPR</span><span class="date today">Jun 30</span></div></div>
-      <div class="item" id="n-ice"><div class="top"><span class="hl">&#127981; <a href="https://www.nbcnews.com/politics/congress/senate-votes-immigration-enforcement-trump-anti-weaponization-fund-rcna348611" target="_blank" rel="noopener">Trump signs a $70 billion immigration-enforcement package funding ICE and Border Patrol through 2029</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>The Senate cleared and the president signed a <b>$70 billion</b> measure pumping money into <b>ICE and the Border Patrol</b> through September 2029, passed via budget reconciliation. It bankrolls a planned hire of <b>10,000 deportation officers</b>, whose rewritten training takes effect July 1 &mdash; a marquee win for the administration's signature priority.</p><div class="meta"><span class="src">NBC News &middot; White House</span><span class="date">Jun 2026</span></div></div>
-      <div class="item" id="n-heatdome"><div class="top"><span class="hl">&#129397; <a href="https://www.cbsnews.com/news/dangerous-long-heat-wave-large-swathes-of-us-this-week/" target="_blank" rel="noopener">A dangerous heat dome settles over much of the US for the holiday week</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>Forecasters warn a sprawling <b>heat dome</b> will bake large swaths of the country through the Fourth, pushing heat indices into dangerous territory for tens of millions &mdash; including North Texas. The seasonal gospel applies: hydrate, check on neighbors and pets, and never leave anyone in a parked car.</p><div class="meta"><span class="src">CBS News &middot; NWS</span><span class="date today">Jun 30</span></div></div>
-      <div class="item" id="n-jetblue"><div class="top"><span class="hl">&#9992;&#65039; <a href="https://www.foxnews.com/us/jetblue-flight-reports-drone-strike-approach-new-york-airport-faa" target="_blank" rel="noopener">A JetBlue flight reports a drone strike on approach to a New York airport, the FAA says</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>The FAA is investigating after a <b>JetBlue</b> crew reported their jet was struck by a <b>drone</b> while approaching a New York-area airport. No injuries were reported, but the incident renews safety worries about unauthorized drones crowding the airspace around busy hubs.</p><div class="meta"><span class="src">Fox News &middot; FAA</span><span class="date today">Jun 30</span></div></div>
-      <div class="item" id="n-ballots"><div class="top"><span class="hl">&#128229; <a href="https://www.foxnews.com/politics/supreme-court-rules-mail-in-ballots-received-after-election-day" target="_blank" rel="noopener">In a separate ruling, the Court weighs in on mail-in ballots received after Election Day</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>Amid its busy closing stretch, the Supreme Court issued a decision touching on whether states may count <b>mail-in ballots that arrive after Election Day</b> &mdash; a question with real stakes for how votes are tallied heading into the <b>2026 midterms</b>. Election administrators nationwide will be parsing the fine print.</p><div class="meta"><span class="src">Fox News &middot; SCOTUSblog</span><span class="date today">Jun 30</span></div></div>
-    </section>
-    <section class="block">
-      <div class="blockhead"><svg class="ico" viewBox="0 0 24 24"><rect width="24" height="24" rx="3" fill="#bf2233"/><rect width="9" height="24" fill="#3a4ea0"/><polygon points="4.5,8 5.6,11 8.8,11 6.2,13 7.2,16 4.5,14.2 1.8,16 2.8,13 0.2,11 3.4,11" fill="#fff"/><rect x="9" width="15" height="12" fill="#fff"/></svg><h2 class="display">Texas &amp; Home</h2><span class="blockquip">&#129396; The school board reaches for Scripture, the Cup rolls into Arlington, and the Hill Country grieves.</span></div>
-      <div class="subhead">&#11088; Texas</div>
-      <div class="item" id="tx-bible"><div class="top"><span class="hl">&#128214; <a href="https://www.keranews.org/education/2026-06-26/texas-board-education-reading-list-bible-passages-social-studies" target="_blank" rel="noopener">Texas school board approves a required reading list that includes Bible passages</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>The Texas State Board of Education voted <b>9&ndash;5&ndash;1</b> to approve a new required K-12 reading list that folds in <b>Bible stories</b> &mdash; David and Goliath for younger kids, the Sermon on the Mount in middle school. The list takes effect in <b>2030</b>; supporters cite literary and historical value, while critics raise church-state concerns.</p><div class="meta"><span class="src">KERA &middot; CNN</span><span class="date">Jun 26</span></div></div>
-      <div class="item" id="tx-mystic"><div class="top"><span class="hl">&#128330;&#65039; <a href="https://www.pbs.org/newshour/nation/camp-mystic-in-texas-files-for-bankruptcy-weeks-after-halting-plans-to-reopen-this-summer" target="_blank" rel="noopener">Camp Mystic files for bankruptcy nearly a year after the deadly Hill Country floods</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>The Texas girls' camp where <b>25 campers, two counselors and its director died</b> in last summer's Guadalupe River flood has filed for <b>Chapter 11 bankruptcy</b>, listing liabilities up to $50 million as it faces multiple lawsuits from grieving families. The filing follows the camp's decision to halt plans to reopen this summer.</p><div class="meta"><span class="src">PBS NewsHour &middot; CBS Texas</span><span class="date">Jun 2026</span></div></div>
-      <div class="item" id="tx-wc"><div class="top"><span class="hl">&#127967;&#65039; <a href="https://www.fwweekly.com/2026/06/22/every-2026-world-cup-game-set-to-be-played-near-fort-worth/" target="_blank" rel="noopener">"Dallas Stadium" hosts the most World Cup matches of any venue &mdash; nine, through July 14</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>Arlington's AT&amp;T Stadium &mdash; rebranded <b>"Dallas Stadium"</b> for the tournament &mdash; carries the heaviest schedule of any host venue: <b>nine matches</b>, a Round-of-16 tie on July 6, and a <b>semifinal on July 14</b>. North Texas is, for six weeks, the beating heart of the global game.</p><div class="meta"><span class="src">Fort Worth Weekly &middot; WFAA</span><span class="date">Jun 2026</span></div></div>
-      <div class="subhead">&#127961;&#65039; Tarrant County / DFW</div>
-      <div class="item" id="dfw-att"><div class="top"><span class="hl">&#9917; <a href="https://www.espn.com/soccer/story/_/id/49223167/world-cup-2026-today-blog-30-06-2026-live-updates-news-fixtures-schedule-results-germany-netherlands-penalties" target="_blank" rel="noopener">Arlington hosts Ivory Coast vs. Norway today &mdash; Haaland in town for the Round of 32</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>The knockouts roll into AT&amp;T Stadium <b>today at 1 p.m. CT</b> as <b>Ivory Coast</b> faces <b>Erling Haaland's Norway</b> &mdash; the first of two Round-of-32 dates for the venue (the next is July 3). Expect a packed house and a downtown buzzing with fans from both nations.</p><div class="meta"><span class="src">ESPN &middot; NBC 5 DFW</span><span class="date today">Jun 30</span></div></div>
-      <div class="item" id="dfw-july4"><div class="top"><span class="hl">&#127878; <a href="https://www.fox4news.com/news/fort-worth-fourth-july-fireworks-celebration" target="_blank" rel="noopener">Fort Worth braces for its biggest Fourth yet &mdash; turnout could top 80,000</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>With the holiday on a <b>Saturday</b>, America's <b>250th</b>, and World Cup crowds in town, Fort Worth organizers expect to beat last year's <b>80,000</b>-plus turnout. Panther Island Pavilion anchors the party with music, food, river tubing and a 9:30 fireworks show over the Trinity.</p><div class="meta"><span class="src">FOX 4 &middot; fortworth.com</span><span class="date today">Jun 30</span></div></div>
-      <div class="item" id="dfw-watch"><div class="top"><span class="hl">&#128483;&#65039; <a href="https://www.papercitymag.com/culture/world-cup-fifa-events-watch-parties-fort-worth/" target="_blank" rel="noopener">Fort Worth's watch-party scene goes all-in: one bar plans 104 themed parties &mdash; one per match</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>The city is leaning into Cup fever: <b>Rex's Bar &amp; Grill</b> is planning <b>104 themed watch parties</b> &mdash; one for every match &mdash; while a new distillery runs a summer-long slate of screenings, food trucks and cocktails. No host city is doing hospitality with more Texas flair.</p><div class="meta"><span class="src">PaperCity &middot; Fort Worth Report</span><span class="date">Jun 2026</span></div></div>
-      <div class="subhead">&#128205; Local desks &mdash; Keller &middot; Bend, OR &middot; Wichita Falls</div>
-      <div class="item" id="lo-keller"><div class="top"><span class="hl">&#128642; <a href="https://www.cityofkeller.com/visitors/keller-news" target="_blank" rel="noopener">Keller approves extra funding to fix the Keller Hicks Road railroad crossing</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>The City Council signed off on its <b>$213,917</b> share of a railroad-crossing project at <b>Keller Hicks Road</b>, plus roughly <b>$104,000</b> more after extra costs to fix the road's crown. Unglamorous infrastructure housekeeping &mdash; the kind that keeps a fast-growing suburb running.</p><div class="meta"><span class="src">Community Impact (Keller)</span><span class="date">Jun 2026</span></div></div>
-      <div class="item" id="lo-bend"><div class="top"><span class="hl">&#128293; <a href="https://www.bendsource.com/collections/the-source-june-25-2026/" target="_blank" rel="noopener">Bend moves to charge developers a fee for putting gas lines in new homes</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>The <b>Bend City Council</b> advanced a plan to charge a fee on builders installing <b>natural-gas systems</b> in new homes &mdash; part of the city's push to hit its carbon-emissions goals and lean away from fossil fuels. A small policy with a big signal about where Central Oregon is heading.</p><div class="meta"><span class="src">The Source Weekly</span><span class="date">Jun 2026</span></div></div>
-      <div class="item" id="lo-wf"><div class="top"><span class="hl">&#9971; <a href="https://www.texomashomepage.com/sports/local-sports/watch-highlights-from-the-2026-texas-oklahoma-junior-golf-tournament-in-wichita-falls/" target="_blank" rel="noopener">Wichita Falls hosts the 2026 Texas-Oklahoma Junior Golf Tournament</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>Young golfers from both states teed it up in <b>Wichita Falls</b> for the annual <b>Texas-Oklahoma Junior</b> tournament &mdash; a long-running rite of summer that brings the region's best prep talent to town. A nice local hook for the golf fans among us.</p><div class="meta"><span class="src">Texoma's Homepage / KFDX</span><span class="date">Jun 2026</span></div></div>
-    </section>
-    <section class="block">
-      <div class="blockhead"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#1a7f4b"/><path d="M12 4l1.8 4.7 5 .3-3.9 3.1 1.3 4.8L12 14.3 7.8 17l1.3-4.8L5.2 9l5-.3z" fill="#fff"/></svg><h2 class="display">Sports</h2><span class="blockquip">&#127944;&#65039; Oxnard countdown, golf's holiday stop, and Brazil escapes by a whisker.</span></div>
-      <div class="item" id="sp-cowboys"><div class="top"><span class="hl">&#127944;&#65039; <a href="https://www.dallascowboys.com/news/free-agency-tracker-updated-list-of-latest-cowboys-news" target="_blank" rel="noopener">One month to Oxnard: Cowboys eye a camp-time pass rush as cap pressure mounts</a></span><span class="fav">&#11088; Your team</span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>With training camp a month out, Dallas is still tinkering with a made-over defense under new coordinator <b>Christian Parker</b> &mdash; and league sources say veteran edge <b>Jadeveon Clowney</b> is the kind of name teams expect to sign once camps open. All of it plays out under the lengthening shadow of <b>Dak Prescott's $240M</b> deal and a tightening salary cap.</p><div class="meta"><span class="src">DallasCowboys.com &middot; ESPN</span><span class="date today">Jun 30</span></div></div>
-      <div class="item" id="sp-golf"><div class="top"><span class="hl">&#9971; <a href="https://golf.com/news/2026-john-deere-classic-tv-schedule-watch-tee-times/" target="_blank" rel="noopener">Golf's holiday stop: the John Deere Classic tees off Thursday with Spieth and Fowler</a></span><span class="fav">&#11088; Your sport</span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>Fresh off <b>Viktor Hovland's</b> Monday-playoff win at the Travelers, the Tour heads to <b>TPC Deere Run</b> in Illinois <b>July 2&ndash;5</b> for the <b>$8.8M John Deere Classic</b>, with <b>Jordan Spieth</b>, <b>Rickie Fowler</b> and <b>Chris Gotterup</b> headlining. A holiday-weekend watch on CBS and Golf Channel.</p><div class="meta"><span class="src">Golf.com &middot; PGA Tour</span><span class="date today">Jun 30</span></div></div>
-      <div class="item" id="sp-wc"><div class="top"><span class="hl">&#9917; <a href="https://sports.yahoo.com/soccer/live/world-cup-2026-scores-results-schedule-live-updates-round-of-32-173000083.html" target="_blank" rel="noopener">Brazil survives Japan in stoppage time; Germany and the Netherlands crash out on penalties</a></span><span class="badge-upd">&#8635; Updated</span><span class="pw free">&#127379; Free</span></div>
-        <p><b>What changed:</b> the Round of 32 is settled, and it was wild. <b>Gabriel Martinelli's 95th-minute winner</b> rescued <b>Brazil</b> past a gallant <b>Japan</b>, while heavyweights <b>Germany</b> (to Paraguay) and the <b>Netherlands</b> (to Morocco) were both bounced on <b>penalties</b>. The bracket already has its chaos.</p><div class="meta"><span class="src">Yahoo Sports &middot; ESPN</span><span class="date today">Jun 30</span></div></div>
-      <div class="item" id="sp-wctoday"><div class="top"><span class="hl">&#127942; <a href="https://sports.yahoo.com/soccer/article/2026-fifa-world-cup-daily-schedule-every-match-date-kickoff-time-and-venue-for-all-48-teams-234515087.html" target="_blank" rel="noopener">Tuesday's slate: Ivory Coast&ndash;Norway in Arlington, France&ndash;Sweden, Mexico&ndash;Ecuador at the Azteca</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>Three Round-of-32 ties today: <b>Ivory Coast vs. Norway</b> (1 p.m. CT, AT&amp;T Stadium), <b>France vs. Sweden</b> (5 p.m., MetLife) and the spicy <b>Mexico vs. Ecuador</b> (9 p.m.) at a roaring <b>Estadio Azteca</b>. Haaland's Norway in our backyard is the local must-watch.</p><div class="meta"><span class="src">Yahoo Sports &middot; NBC Sports</span><span class="date today">Jun 30</span></div></div>
-      <div class="item" id="sp-rangers"><div class="top"><span class="hl">&#9918;&#65039; <a href="https://www.espn.com/mlb/game/_/gameId/401815955/rangers-guardians" target="_blank" rel="noopener">Rangers edge the Guardians 3-2 to open a road trip in Cleveland</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>Texas opened its three-game set at <b>Cleveland</b> with a tidy <b>3-2</b> win &mdash; the kind of grind-it-out road victory that matters as the Rangers jockey for position with the July <b>trade deadline</b> closing in. A good week to keep an eye on the standings.</p><div class="meta"><span class="src">ESPN &middot; CBS Sports</span><span class="date today">Jun 30</span></div></div>
-    </section>
-    <section class="block">
-      <div class="blockhead"><svg class="ico" viewBox="0 0 24 24"><rect width="24" height="24" rx="3" fill="#6a4c93"/><circle cx="12" cy="12" r="6" fill="#fff"/><circle cx="12" cy="12" r="2" fill="#6a4c93"/></svg><h2 class="display">Arts &amp; Entertainment</h2><span class="blockquip">&#127916; The Dutton finale looms, Sheridan keeps stacking the charts, and Woody holds the box office.</span></div>
-      <div class="item" id="ae-dutton"><div class="top"><span class="hl">&#129333; <a href="https://collider.com/dutton-ranch-taylor-sheridan-yellowstone-spin-off-nielsen-ratings-viewership-june-2026/" target="_blank" rel="noopener">"Dutton Ranch" rides into its Season 1 finale Friday as Paramount+'s No. 1 show</a></span><span class="fav">&#11088; Your pick</span><span class="badge-upd">&#8635; Updated</span><span class="pw free">&#127379; Free</span></div>
-        <p><b>What changed:</b> the finish line is here. Sheridan's <b>Dutton Ranch</b> (Kelly Reilly, Cole Hauser) wraps its nine-episode first season <b>July 3</b>, riding a <b>736 million-minute</b> Nielsen week and a Certified-Fresh <b>89%</b> on Rotten Tomatoes. It's the engine keeping Paramount+ humming.</p><div class="meta"><span class="src">Collider &middot; Nielsen</span><span class="date today">Jun 30</span></div></div>
-      <div class="item" id="ae-marshals"><div class="top"><span class="hl">&#127913; <a href="https://collider.com/marshals-taylor-sheridan-yellowstone-spinoff-streaming-hit-june-2026/" target="_blank" rel="noopener">"Marshals" soars in viewership even as critics shrug</a></span><span class="fav">&#11088; Your pick</span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>The <b>Kayce Dutton</b> spin-off <b>Marshals</b> (Luke Grimes) is a viewership hit despite being the franchise's lowest-rated entry (a rough <b>48%</b> critics / <b>27%</b> audience on RT). Proof, once again, that the Sheridan brand moves eyeballs no matter what the reviews say.</p><div class="meta"><span class="src">Collider</span><span class="date">Jun 2026</span></div></div>
-      <div class="item" id="ae-tulsa"><div class="top"><span class="hl">&#127941; <a href="https://movieweb.com/taylor-sheridan-tulsa-king-streaming-success-july-2026/" target="_blank" rel="noopener">"Tulsa King" is officially one of the biggest shows on streaming</a></span><span class="fav">&#11088; Your pick</span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>Sheridan's <b>Sylvester Stallone</b> mob comedy has hardened into a streaming heavyweight, drawing big audiences on catalog strength alone as fans queue up for the next season. The Sheridan universe just keeps widening.</p><div class="meta"><span class="src">MovieWeb</span><span class="date">Jul 2026</span></div></div>
-      <div class="item" id="ae-box"><div class="top"><span class="hl">&#129331; <a href="https://www.goldderby.com/film/2026/supergirl-weekend-box-office-jackass-toy-story-5/" target="_blank" rel="noopener">Box office, final: "Toy Story 5" holds No. 1 (~$70M); "Supergirl" opens soft at ~$38M</a></span><span class="badge-upd">&#8635; Updated</span><span class="pw free">&#127379; Free</span></div>
-        <p><b>What changed:</b> the weekend's numbers firmed up. <b>Toy Story 5</b> stayed atop the chart with about <b>$70M</b> (off 55% from its franchise-record $160M debut) to cross <b>$585M worldwide</b>, while <b>Supergirl</b> managed only a <b>~$38M</b> bow. The Pixar machine prints; the Kryptonian reboot has work to do.</p><div class="meta"><span class="src">Gold Derby &middot; Variety</span><span class="date">Jun 28</span></div></div>
-      <div class="item" id="ae-movies"><div class="top"><span class="hl">&#127902;&#65039; <a href="https://www.techradar.com/streaming/entertainment/new-movies-2026-guide" target="_blank" rel="noopener">Beyond the Duttons: a loaded summer movie slate to fill the long weekend</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>If the heat keeps you indoors (or in a cool theater), there's plenty on tap beyond <b>Toy Story 5</b>: a steady drumbeat of summer tentpoles and counterprogramming is rolling out through July. A handy menu for planning the holiday-weekend watch list, in theaters or on the couch.</p><div class="meta"><span class="src">TechRadar &middot; Brief desk</span><span class="date">Jun 2026</span></div></div>
-    </section>
+<!-- SECTION GRID ROW 1: Business & Money | Tech AI & Science -->
+<div class="grid2">
+
+<!-- BUSINESS & MONEY (6 items: 3 Markets/Business + 3 Personal Finance) -->
+<div class="section" id="business">
+  <div class="sec-head">💼 Business &amp; Money</div>
+  <div class="sub-head">Markets &amp; Business</div>
+
+  <div class="item" id="q2-stocks">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">📊</span> <a href="https://climateandeconomy.com/2026/07/01/1st-july-2026-todays-round-up-of-economic-news/" target="_blank">Q2 in the books: Wall Street wraps its best quarter in years</a> <span class="paywall free">Free</span></div>
+    <div class="meta">July 1, 2026 · Climate &amp; Economy</div>
+    <p>The S&amp;P 500 closed the quarter on a high note, with markets opening flat Wednesday as ADP private payroll data, ISM Manufacturing PMI, and June construction spending all hit the tape simultaneously. A data-heavy holiday-week morning — coffee strongly advised.</p>
   </div>
-  <section class="block fullwidth" id="curiosities">
-    <div class="blockhead"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#d4862a"/><path d="M9 9a3 3 0 1 1 4 2.8c-.8.4-1 .9-1 1.7M12 17h.01" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg><h2 class="display">Curiosities</h2><span class="blockquip">&#129327; An emu on the lam, a sneaky great white, and Ottawa's unfortunate typo.</span></div>
-    <div class="curiogrid">
-      <div class="item" id="cu-ottawa"><div class="top"><span class="hl">&#127467;&#127479; <a href="https://www.upi.com/Odd_News/2026/06/29/canada-Ottawa-posters-French-language-typo/2231782743355/" target="_blank" rel="noopener">A French typo on Ottawa posters accidentally heralds the city's new "pubic squares"</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>City posters in <b>Ottawa</b> meant to celebrate public squares lost a crucial "l" in the French translation, proudly announcing a network of <b>"pubic squares"</b> instead. Proofreaders everywhere felt a familiar chill.</p><div class="meta"><span class="src">UPI Odd News</span><span class="date">Jun 29</span></div></div>
-      <div class="item" id="cu-emu"><div class="top"><span class="hl">&#129460; <a href="https://www.upi.com/Odd_News/2026/06/26/loose-emu-Hoptacong-Animal-Shelter-New-Jersey/1141782489837/" target="_blank" rel="noopener">A New Jersey emu is finally caught after two weeks on the lam</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>An <b>emu</b> that spent roughly <b>two weeks</b> roaming around Hopatcong, New Jersey, was at last corralled by an animal shelter. Where it thought it was going, the tall flightless bird declined to say.</p><div class="meta"><span class="src">UPI Odd News</span><span class="date">Jun 26</span></div></div>
-      <div class="item" id="cu-parakeet"><div class="top"><span class="hl">&#129509; <a href="https://www.upi.com/Odd_News/2026/06/26/Guinness-World-Records-oldest-parakeet/8461782497306/" target="_blank" rel="noopener">A parakeet named Spoodles is crowned the world's oldest at 32</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>Guinness World Records certified <b>Spoodles</b>, a <b>32-year-old</b> parakeet, as the oldest of its kind &mdash; roughly four times the typical budgie lifespan. The secret, presumably, is millet and refusing to quit.</p><div class="meta"><span class="src">UPI Odd News &middot; Guinness</span><span class="date">Jun 26</span></div></div>
-      <div class="item" id="cu-shark"><div class="top"><span class="hl">&#129416; <a href="https://www.upi.com/Odd_News/2026/06/24/paddleboarders-great-white-shark-Santa-Barbara-California/3001782323434/" target="_blank" rel="noopener">Paddleboarders went looking for a great white &mdash; a drone shows it found them first</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>Off <b>Santa Barbara</b>, two paddleboarders set out to spot a shark reported in the area &mdash; and only realized after reviewing <b>drone footage</b> that a <b>great white</b> had quietly trailed them the whole time. The ocean is always one notification behind.</p><div class="meta"><span class="src">UPI Odd News</span><span class="date">Jun 24</span></div></div>
-      <div class="item" id="cu-lotto"><div class="top"><span class="hl">&#128176; <a href="https://www.upi.com/Odd_News/2026/06/25/lotto-North-Carolina-Education-Lottery-visions-Powerball/9681782407342/" target="_blank" rel="noopener">A North Carolina man says he had "visions" of luck &mdash; then won $100,000 on Powerball</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>A North Carolina man told lottery officials he kept having <b>"visions"</b> of winning &mdash; so he bought a <b>Powerball</b> ticket and promptly landed a <b>$100,000</b> prize. The visions, notably, did not extend to the jackpot.</p><div class="meta"><span class="src">UPI Odd News</span><span class="date">Jun 25</span></div></div>
-      <div class="item" id="cu-toilet"><div class="top"><span class="hl">&#128701;&#65039; <a href="https://www.upi.com/Odd_News/2026/06/25/campgound-toilet-rescue-Fresno-County-California/9991782404124/" target="_blank" rel="noopener">A dropped pair of sunglasses lands a California man stuck in a campground toilet</a></span><span class="badge-new">&#127381; New</span><span class="pw free">&#127379; Free</span></div>
-        <p>A man in <b>Fresno County</b> reached into a campground vault toilet to fish out his fallen <b>sunglasses</b> &mdash; and got stuck, requiring a rescue crew to free him. A cautionary tale about the true price of cheap shades.</p><div class="meta"><span class="src">UPI Odd News</span><span class="date">Jun 25</span></div></div>
-    </div>
-  </section>
-  <section class="block fullwidth" id="events">
-    <div class="blockhead"><svg class="ico" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" fill="#d4862a"/><rect x="3" y="5" width="18" height="5" fill="#a8641a"/><rect x="7" y="3" width="2" height="4" rx="1" fill="#7a4a12"/><rect x="15" y="3" width="2" height="4" rx="1" fill="#7a4a12"/><g fill="#fff"><rect x="6" y="12" width="3" height="3"/><rect x="11" y="12" width="3" height="3"/><rect x="16" y="12" width="2" height="3"/></g></svg><h2 class="display">Out &amp; About</h2><span class="blockquip">&#128197; This week: drones &amp; fireworks for the 250th, lakeside booms, World Cup watch parties.</span></div>
-    <div class="evcols">
-      <div class="evcol">
-        <div class="subhead">&#128205; Keller &amp; nearby (Southlake &middot; Grapevine &middot; Colleyville &middot; Roanoke)</div>
-        <div class="item"><div class="top"><span class="datechip soon">Fri Jul 3</span><span class="hl">&#127878; <a href="https://www.cityofkeller.com/visitors/city-calendar/community-calendar" target="_blank" rel="noopener">Keller Lights &mdash; drone show + fireworks at Keller Town Hall</a></span><span class="pw free">&#127379; Free</span></div>
-          <p>6&ndash;10 p.m.: a 20-minute drone-and-fireworks show, headliner Emerald City, food trucks and giveaways. The town's big 250th party.</p></div>
-        <div class="item"><div class="top"><span class="datechip wknd">Sat Jul 4</span><span class="hl">&#127881; <a href="https://www.grapevinetexasusa.com/events/" target="_blank" rel="noopener">Grapevine July 4th Fireworks Extravaganza over Lake Grapevine</a></span><span class="pw free">&#127379; Free</span></div>
-          <p>Fireworks set to patriotic music light up Lake Grapevine at 9:30 p.m. &mdash; plenty of shoreline viewing spots.</p></div>
-        <div class="item"><div class="top"><span class="datechip">Fri nights</span><span class="hl">&#127928; <a href="https://www.grapevinetexasusa.com/events/" target="_blank" rel="noopener">Grapevine Main LIVE! &mdash; free summer concerts at Peace Plaza</a></span><span class="pw free">&#127379; Free</span></div>
-          <p>Live music outside Harvest Hall on Main Street &mdash; a cool-of-the-evening hang before the holiday rush.</p></div>
-        <div class="item"><div class="top"><span class="datechip">Ongoing</span><span class="hl">&#127907; <a href="https://communityimpact.com/dallas-fort-worth/keller-roanoke-northeast-fort-worth/events/" target="_blank" rel="noopener">Free catfish fishing behind Keller Town Hall</a></span><span class="pw free">&#127379; Free</span></div>
-          <p>Stocked pond, free for anglers 16 and under all summer &mdash; go early before the heat sets in.</p></div>
-      </div>
-      <div class="evcol">
-        <div class="subhead">&#127750; Fort Worth &amp; DFW</div>
-        <div class="item"><div class="top"><span class="datechip soon">Tue Jun 30</span><span class="hl">&#9917; <a href="https://www.fortworth.com/events/" target="_blank" rel="noopener">World Cup at AT&amp;T Stadium: Ivory Coast vs. Norway</a></span><span class="pw free">&#127379; Free</span></div>
-          <p>1 p.m. CT kickoff in Arlington &mdash; the Round of 32 comes to North Texas, with another match at the venue July 3.</p></div>
-        <div class="item"><div class="top"><span class="datechip wknd">Sat Jul 4</span><span class="hl">&#127754; <a href="https://www.fortworth.com/events/" target="_blank" rel="noopener">Fort Worth's Fourth &mdash; Panther Island Pavilion</a></span><span class="pw free">&#127379; Free</span></div>
-          <p>5&ndash;10 p.m.: food, live music, river tubing and a 9:30 fireworks show over the Trinity. Kids' inflatables and zip line till 8.</p></div>
-        <div class="item"><div class="top"><span class="datechip">Through Jul 19</span><span class="hl">&#9917; <a href="https://www.fortworth.com/events/" target="_blank" rel="noopener">Sundance Square World Cup Celebration &amp; watch parties</a></span><span class="pw free">&#127379; Free</span></div>
-          <p>Every match on big outdoor screens downtown, plus live music and soccer activities &mdash; free fan central through the tournament.</p></div>
-        <div class="item"><div class="top"><span class="datechip soon">Through Jul 5</span><span class="hl">&#129352; <a href="https://www.fortworth.com/events/" target="_blank" rel="noopener">Stockyards "Red, White &amp; Boots" America 250 Celebration</a></span><span class="pw free">&#127379; Free</span></div>
-          <p>Ten days of cattle drives, music and cowboy spectacle in the Stockyards &mdash; the 250th-birthday bash with a Texas accent.</p></div>
-        <div class="subhead" style="margin-top:8px;">&#128467;&#65039; Plan ahead</div>
-        <div class="item"><div class="top"><span class="hl">Full event calendars</span></div>
-          <p><a href="https://www.cityofkeller.com/visitors/city-calendar/community-calendar" target="_blank" rel="noopener">City of Keller</a> &middot; <a href="https://communityimpact.com/dallas-fort-worth/grapevine-colleyville-southlake/events/" target="_blank" rel="noopener">Grapevine-Colleyville-Southlake</a> &middot; <a href="https://www.fortworth.com/events/" target="_blank" rel="noopener">fortworth.com/events</a> &middot; <a href="https://fortworth.culturemap.com/" target="_blank" rel="noopener">CultureMap picks</a></p>
-          <span class="src">City of Keller &middot; Community Impact &middot; FTWtoday &middot; Fort Worth CVB</span></div>
-      </div>
-    </div>
-  </section>
-  <footer>
-    <div class="sources">&#128229; <b>Today's sources:</b> Morning Brew &middot; FTWtoday &middot; Community Impact &middot; AP &middot; Reuters &middot; Google News &middot; NPR &middot; CNN &middot; Yahoo Finance &middot; TheStreet &middot; Schwab &middot; CNBC &middot; Bankrate &middot; Energy.gov &middot; NCLC &middot; TechCrunch &middot; Distill Intelligence &middot; NASA Science &middot; University of Oxford &middot; ScienceDaily &middot; Al Jazeera &middot; Euronews &middot; NBC News &middot; Fox News &middot; The Hill &middot; SCOTUSblog &middot; eNCA &middot; WHO &middot; KERA &middot; PBS NewsHour &middot; CBS Texas &middot; Fort Worth Weekly &middot; Fort Worth Report &middot; WFAA &middot; NBC 5 DFW &middot; FOX 4 &middot; PaperCity &middot; fortworth.com &middot; The Source Weekly &middot; Texoma's Homepage &middot; ESPN &middot; Yahoo Sports &middot; NBC Sports &middot; Golf.com &middot; PGA Tour &middot; DallasCowboys.com &middot; CBS Sports &middot; Collider &middot; MovieWeb &middot; Gold Derby &middot; Variety &middot; NPR Music &middot; UPI Odd News &middot; CultureMap + the open web. Multi-outlet stories are merged into one entry.</div>
-    <div>&#128736;&#65039; <b>How this works:</b> Grouped themed buckets on an aligned two-column grid (each section starts level with the one beside it; paired sections carry equal counts), with a TL;DR "Rundown" and a full-width Lead up top, and a consolidated Markets &amp; Weather panel. Deduplicated &amp; non-repeating &mdash; a pre-publish gate reads the rolling 7-day ledger and blocks repeats by URL, near-identical headline, OR same-event story-key. Rate/price numbers live only in By the Numbers; the Finance desk covers what to do about them. Curiosities is funny only; Science sits with Tech &amp; AI; Sports &amp; Entertainment lead with the reader's favorites. The masthead art rotates each edition. Live data &mdash; markets, weather, and By-the-Numbers refresh on their own. <span class="free" style="padding:1px 5px;border-radius:4px;">&#127379; Free</span> vs <span class="pay" style="padding:1px 5px;border-radius:4px;">Subscription</span> flags paywalls. <span class="badge-new" style="margin:0;">New</span> = first appearance; <span class="badge-upd" style="margin:0;">Updated</span> = materially changed. Built Tuesday, June 30, 2026 (Morning Edition).</div>
-  </footer>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">💼</span> <a href="https://www.usnews.com/news/national-news/articles/2026-06-29/jobs-report-on-tap-as-americans-head-into-july-4-weekend" target="_blank">June jobs report drops Thursday: 115K jobs expected, unemployment steady at 4.3%</a> <span class="paywall free">Free</span></div>
+    <div class="meta">June 29, 2026 · U.S. News &amp; World Report</div>
+    <p>With Americans prepping for the long weekend, the BLS release at 8:30 AM ET Thursday will set the economic tone for Q3. A beat could ease recession nerves; a miss could stir them back up.</p>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">📅</span> <a href="https://www.kiplinger.com/investing/economy/this-weeks-economic-calendar" target="_blank">Economic calendar June 29–July 3: a packed week before the parade</a> <span class="paywall free">Free</span></div>
+    <div class="meta">June 2026 · Kiplinger</div>
+  </div>
+
+  <div class="sub-head">Personal Finance</div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🏠</span> <a href="https://money.usnews.com/loans/mortgages/articles/mortgage-rates-today-june-30-2026" target="_blank">30-year mortgage creeps to 6.55% — what summer buyers need to know</a> <span class="paywall free">Free</span></div>
+    <div class="meta">June 30, 2026 · U.S. News</div>
+    <p>Rates ticked up six basis points this week, keeping the housing market in its familiar "lock-in effect" limbo. Experts see relief only if the Fed cuts again before fall.</p>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">💰</span> <a href="https://fortune.com/article/best-savings-account-rates-6-24-2026/" target="_blank">HYSA rates settle near 4–5%: lock in now before the next Fed cut</a> <span class="paywall free">Free</span></div>
+    <div class="meta">June 24, 2026 · Fortune</div>
+    <p>Top yields have drifted from their 5%+ peak as the Fed has cut twice. Online banks and credit unions still lead — the window to grab inflation-beating returns may be narrowing.</p>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">💳</span> <a href="https://www.cbsnews.com/news/money-moves-2026-experts-recommend/" target="_blank">5 money moves experts swear by for mid-2026: tackle debt, build the fund</a> <span class="paywall free">Free</span></div>
+    <div class="meta">2026 · CBS News</div>
+  </div>
 </div>
+
+<!-- TECH, AI & SCIENCE (6 items: 3 Tech/AI + 3 Science) -->
+<div class="section" id="tech">
+  <div class="sec-head">🤖 Tech, AI &amp; Science</div>
+  <div class="sub-head">Tech &amp; AI</div>
+
+  <div class="item" id="spacex-ai">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🤖</span> <a href="https://www.cnbc.com/2026/06/22/spacex-ai-colossus-data-center-reflection.html" target="_blank">SpaceX's Colossus 2 starts serving Reflection AI today — $150M/month for Nvidia GB300 chips</a> <span class="paywall free">Free</span></div>
+    <div class="meta">June 22, 2026 · CNBC</div>
+    <p>The open-source AI startup Reflection AI begins drawing on SpaceX's massive Colossus 2 data center today as part of a deal worth up to $6.3 billion. For context: that's more than NASA's annual budget flowing to a single private compute cluster. The AI arms race now has a landlord named Elon.</p>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🛰️</span> <a href="https://www.nature.com/articles/d41586-026-01370-6" target="_blank">The case for data centers in orbit: AI demand is pushing compute to the sky</a> <span class="paywall free">Free</span></div>
+    <div class="meta">2026 · Nature</div>
+    <p>Orbital data centers could tap virtually unlimited solar energy and sidestep Earth's cooling and land constraints. Several startups and agencies are now treating "space compute" less like sci-fi and more like a serious capital planning decision.</p>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">📡</span> <a href="https://www.deloitte.com/us/en/insights/topics/economy/global-economic-outlook/weekly-update.html" target="_blank">AI chips fuel global billionaire surge: wealth up 25% as tech stocks boom</a> <span class="paywall free">Free</span></div>
+    <div class="meta">2026 · Deloitte Insights</div>
+  </div>
+
+  <div class="sub-head">Science</div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🚀</span> <a href="https://www.space.com/space-exploration/launches-spacecraft/whats-next-for-spacexs-starship-v3-megarocket-after-its-historic-debut-flight" target="_blank">What's next for Starship V3 after its debut: Artemis lunar missions and beyond</a> <span class="paywall free">Free</span></div>
+    <div class="meta">2026 · Space.com</div>
+    <p>SpaceX's Starship V3 made its partially successful debut on May 22 — engine glitches and an off-script booster landing aside. NASA is counting on it for the Artemis 3 crewed lunar landing, and the clock is ticking.</p>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🌌</span> <a href="https://scitechdaily.com/" target="_blank">China's Tianwen-2 approaching asteroid Kamoʻoalewa this month for sample return</a> <span class="paywall free">Free</span></div>
+    <div class="meta">July 2026 · SciTechDaily</div>
+    <p>The mission will deploy spectrometers, cameras, and a magnetometer to study the unusual near-Earth asteroid — possibly a chunk of the Moon — before collecting samples for return to Earth. One small scoop for China, one giant geochemistry puzzle for scientists.</p>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🧊</span> <a href="https://spectrum.ieee.org/new-technology-2026" target="_blank">Near-absolute-zero brain chip could transform quantum computing, HKU researchers say</a> <span class="paywall free">Free</span></div>
+    <div class="meta">2026 · IEEE Spectrum</div>
+  </div>
+</div>
+
+</div><!-- end grid2 row 1 -->
+<!-- SECTION GRID ROW 2: World & Nation | Texas & Home -->
+<div class="grid2">
+
+<!-- WORLD & NATION (10 items: 5 World + 5 Nation) -->
+<div class="section" id="world">
+  <div class="sec-head">🌍 World &amp; Nation</div>
+  <div class="sub-head">World</div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🏛️</span> <a href="https://www.americanimmigrationcouncil.org/blog/supreme-court-immigration-ruling-tps-asylum-seekers/" target="_blank">Court ends TPS for Haitians &amp; Syrians; hundreds of thousands face deportation risk</a> <span class="paywall free">Free</span></div>
+    <div class="meta">July 1, 2026 · American Immigration Council</div>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🚫</span> <a href="https://www.pbs.org/newshour/politics/supreme-court-clears-way-for-trump-administration-to-revive-restrictive-immigration-policy" target="_blank">SCOTUS blesses border metering: asylum seekers turned back before crossing have no right to apply</a> <span class="paywall free">Free</span></div>
+    <div class="meta">July 1, 2026 · PBS NewsHour</div>
+    <p>The 6-3 decision hinges on a grammatical distinction — "arriving in" vs. "arriving at" the U.S. — that critics say effectively buries the right to seek asylum at the border without saying so directly.</p>
+  </div>
+
+  <div class="item" id="heatwave">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🌡️</span> <a href="https://sports.yahoo.com/soccer/article/2026-world-cup-results-standings-and-schedule-live-scores-group-stage-updates-and-how-to-watch-050724193.html" target="_blank">Eastern U.S. heat wave intensifies — dangerous conditions hit World Cup venues from Atlanta to D.C.</a> <span class="paywall free">Free</span></div>
+    <div class="meta">July 1, 2026 · Yahoo Sports / AP</div>
+    <p>A heat dome is baking the eastern half of the country this week, driving heat indexes above 105°F — a grim backdrop for outdoor World Cup fan zones and the millions traveling to see games in person.</p>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🗳️</span> <a href="https://www.usnews.com/news/national-news/articles/2026-06-29/jobs-report-on-tap-as-americans-head-into-july-4-weekend" target="_blank">GOP pushes courts to allow voter roll purges in final 90 days before elections</a> <span class="paywall free">Free</span></div>
+    <div class="meta">Late June 2026 · U.S. News</div>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🇨🇳</span> <a href="https://climateandeconomy.com/2026/07/01/1st-july-2026-todays-round-up-of-economic-news/" target="_blank">China's exports surge 19.6% in May — but fixed-asset investment hits steepest drop since 2020</a> <span class="paywall free">Free</span></div>
+    <div class="meta">July 1, 2026 · Climate &amp; Economy</div>
+  </div>
+
+  <div class="sub-head">Nation</div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">✈️</span> <a href="https://www.usnews.com/news/national-news/articles/2026-06-29/jobs-report-on-tap-as-americans-head-into-july-4-weekend" target="_blank">Summer air travel breaks all-time records — but the system is stretched thin</a> <span class="paywall free">Free</span></div>
+    <div class="meta">June 2026 · U.S. News</div>
+    <p>Airlines are carrying more passengers than ever while operating fewer flights than 20 years ago. Delays and cancellations are already spiking heading into the July 4th holiday crush — plan accordingly.</p>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🏊</span> <a href="https://www.cbsnews.com/news/money-moves-2026-experts-recommend/" target="_blank">Florida funds swim lessons for autistic kids: children with autism drown at 160× the rate of peers</a> <span class="paywall free">Free</span></div>
+    <div class="meta">June 2026 · CBS News / NPR</div>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">💸</span> <a href="https://www.deloitte.com/us/en/insights/topics/economy/global-economic-outlook/weekly-update.html" target="_blank">Global billionaire count jumps 13% — AI stock boom lifted their wealth by 25% in one year</a> <span class="paywall free">Free</span></div>
+    <div class="meta">2026 · Deloitte / Forbes</div>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🛒</span> <a href="https://climateandeconomy.com/2026/07/01/1st-july-2026-todays-round-up-of-economic-news/" target="_blank">Consumer squeeze tightens: gas and energy costs outrun incomes, cutting into spending</a> <span class="paywall free">Free</span></div>
+    <div class="meta">July 1, 2026 · Climate &amp; Economy</div>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🇺🇸</span> <a href="https://www.usnews.com/news/national-news/articles/2026-06-29/jobs-report-on-tap-as-americans-head-into-july-4-weekend" target="_blank">Pre-250th pulse check: NPR/Marist poll reveals how Americans see the nation's direction</a> <span class="paywall free">Free</span></div>
+    <div class="meta">Late June 2026 · NPR / Marist</div>
+  </div>
+</div>
+
+<!-- TEXAS & HOME (10 items: 3 Texas + 3 Tarrant/DFW + 4 Local desks) -->
+<div class="section" id="texas">
+  <div class="sec-head">🤠 Texas &amp; Home</div>
+  <div class="sub-head">Texas</div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🌡️</span> <a href="https://www.nbcdfw.com/news/local/red-white-and-blue-fourth-of-july-events-near-you-2/4042318/" target="_blank">North Texas heat advisory: heat index near 105° through the weekend — stay hydrated</a> <span class="paywall free">Free</span></div>
+    <div class="meta">July 1, 2026 · NBC DFW</div>
+    <p>Hot, dry, and breezy with south winds 15–25 mph and afternoon highs in the mid-to-upper 90s. The National Weather Service has heat advisories active across much of North Texas — keep the water bottle close for any outdoor July 4th plans.</p>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">⚽</span> <a href="https://dfwpulse.com/blog/dfw-4th-of-july-fireworks-2026" target="_blank">DFW named one of North America's top World Cup summer destinations as fan energy builds</a> <span class="paywall free">Free</span></div>
+    <div class="meta">July 2026 · DFW Pulse</div>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🏫</span> <a href="https://fortworth.culturemap.com/news/entertainment/fort-worth-4th-of-july/" target="_blank">Texas A&amp;M Law and Education Building to open this fall — Fort Worth campus expansion</a> <span class="paywall free">Free</span></div>
+    <div class="meta">June 2026 · CultureMap Fort Worth</div>
+  </div>
+
+  <div class="sub-head">Tarrant County / DFW</div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🚌</span> <a href="https://dfwpulse.com/blog/dfw-4th-of-july-fireworks-2026" target="_blank">Trinity Metro's $10 World Cup shuttle launches: direct service from downtown Fort Worth through July 12</a> <span class="paywall free">Free</span></div>
+    <div class="meta">July 2026 · DFW Pulse / Trinity Metro</div>
+    <p>The new route connects downtown Fort Worth to Fort Worth Zoo and Buc-ee's fan zones. At $10 a pop, it's cheaper than parking and you won't have to fight post-match traffic on I-35W.</p>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🎆</span> <a href="https://fortworth.culturemap.com/news/entertainment/fort-worth-4th-of-july/" target="_blank">Fort Worth 4th at Panther Island: free concert, tubing, ziplining — fireworks at 9:30 PM July 4</a> <span class="paywall free">Free</span></div>
+    <div class="meta">July 2026 · CultureMap Fort Worth</div>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">👔</span> <a href="https://www.dallasobserver.com/arts-culture/fourth-of-july-fireworks-guide-dallas-2026-22572838/" target="_blank">Dallas Observer July 4th guide: the best fireworks and festivals in DFW this weekend</a> <span class="paywall free">Free</span></div>
+    <div class="meta">July 2026 · Dallas Observer</div>
+  </div>
+
+  <div class="sub-head">Local Desks — Keller · Bend, OR · Wichita Falls</div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🎆</span> <a href="https://dfwpulse.com/blog/dfw-4th-of-july-fireworks-2026" target="_blank">Keller: Keller Lights returns July 4 — drone show, live music, fireworks at Town Hall</a> <span class="paywall free">Free</span></div>
+    <div class="meta">July 2026 · DFW Pulse / City of Keller</div>
+    <p>The annual celebration at Keller Town Hall features a 20-minute fireworks show, a headlining performance from Emerald City, drone light display, photo ops, and food vendors. Gates open in the afternoon — arrive early for a good spot on the lawn.</p>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">💵</span> <a href="https://ktvz.com/news/" target="_blank">Bend/Oregon: minimum wage jumps to $15.55 statewide today — $16.80 in Portland metro</a> <span class="paywall free">Free</span></div>
+    <div class="meta">July 1, 2026 · KTVZ / Central Oregon Daily</div>
+    <p>Oregon's tiered minimum wage system takes effect today across the state. Workers in Bend and most of Central Oregon fall under the statewide $15.55 rate. For many service workers, that's an immediate bump to their next paycheck.</p>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">⛽</span> <a href="https://ktvz.com/news/" target="_blank">Bend gas prices fall to ~$4.50/gal, down 70¢ from last month ahead of the holiday weekend</a> <span class="paywall free">Free</span></div>
+    <div class="meta">July 2026 · KTVZ</div>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🦟</span> <a href="https://www.dshs.texas.gov/infectious-disease/arboviral/west-nile-virus" target="_blank">Wichita Falls: West Nile Virus detected in local mosquito pool — DSHS urges repellent and source removal — city urges protection</a> <span class="paywall free">Free</span></div>
+    <div class="meta">July 2026 · Texas DSHS / Local reports</div>
+    <p>A mosquito sample from Wichita Falls has tested positive for West Nile Virus. The city urges residents to eliminate standing water, use EPA-registered insect repellent, and wear long sleeves at dusk and dawn.</p>
+  </div>
+</div>
+
+</div><!-- end grid2 row 2 -->
+<!-- SECTION GRID ROW 3: Sports | Arts & Entertainment -->
+<div class="grid2">
+
+<!-- SPORTS (7 items) -->
+<div class="section" id="sports">
+  <div class="sec-head">🏆 Sports</div>
+
+  <div class="item" id="wc-usmnt">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">⚽</span> <a href="https://sports.yahoo.com/soccer/article/2026-world-cup-results-standings-and-schedule-live-scores-group-stage-updates-and-how-to-watch-050724193.html" target="_blank">USMNT vs. Bosnia &amp; Herzegovina tonight — Round of 32, last 16 spot on the line</a> <span class="paywall free">Free</span></div>
+    <div class="meta">July 1, 2026 · Yahoo Sports</div>
+    <p>Kickoff at 8 PM CT from Levi's Stadium in Santa Clara. The Americans haven't beaten a European opponent since 2021 and haven't won a World Cup knockout game since 2002 — but they're favored tonight. The 250th birthday weekend would taste a lot better with a win.</p>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">⚽</span> <a href="https://www.skysports.com/football/news/12098/13556636/world-cup-2026-bracket-and-knockout-fixtures-whos-facing-who-in-the-last-32-and-route-to-final" target="_blank">Full July 1 World Cup slate: England vs. Congo (Atlanta, noon) · Belgium vs. Senegal (Seattle, 4 PM)</a> <span class="paywall free">Free</span></div>
+    <div class="meta">July 1, 2026 · Sky Sports</div>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🏈</span> <a href="https://www.si.com/nfl/cowboys/onsi/predicting-dallas-cowboys-53-man-roster-entering-july" target="_blank">Predicting the Cowboys' 53-man roster entering July: who makes the cut?</a> <span class="paywall free">Free</span></div>
+    <div class="meta">July 2026 · Sports Illustrated</div>
+    <p>Training camp in Oxnard opens July 27 under second-year head coach Brian Schottenheimer, who says he "could not be more happy" with the offseason. After a 7-9-1 2025, Dallas needs to find the winning formula — and roster decisions start now.</p>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🏈</span> <a href="https://www.dallascowboys.com/news/nfl-announces-cowboys-2026-complete-17-game-schedule" target="_blank">Cowboys 2026 full schedule revealed: key matchups and the path back to the playoffs</a> <span class="paywall free">Free</span></div>
+    <div class="meta">2026 · DallasCowboys.com</div>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">⛳</span> <a href="https://www.cbssports.com/golf/leaderboard/" target="_blank">John Deere Classic tees off tomorrow at TPC Deere Run — Scheffler eyes Open prep</a> <span class="paywall free">Free</span></div>
+    <div class="meta">July 2026 · CBS Sports</div>
+    <p>The PGA Tour's pre-Open tuneup runs July 2–5 in Silvis, IL. Scottie Scheffler, who won two majors in 2025, is looking to sharpen his game before defending The Open Championship at Royal Birkdale July 13–19.</p>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🏀</span> <a href="https://www.foxsports.com/nba/dallas-mavericks-team" target="_blank">Mavericks explore Kawhi Leonard trade talks as Kyrie Irving rehabs knee ahead of 2026–27 season</a> <span class="paywall free">Free</span></div>
+    <div class="meta">July 2026 · FOX Sports</div>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🏀</span> <a href="https://www.nba.com/mavs/" target="_blank">Mavs draft Morez Johnson No. 9 overall to bolster the frontcourt; Las Vegas Summer League ahead</a> <span class="paywall free">Free</span></div>
+    <div class="meta">July 2026 · NBA.com</div>
+  </div>
+</div>
+
+<!-- ARTS & ENTERTAINMENT (7 items) -->
+<div class="section" id="arts">
+  <div class="sec-head">🎬 Arts &amp; Entertainment</div>
+
+  <div class="item" id="sheridan-nbc">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">💰</span> <a href="https://www.hollywoodreporter.com/tv/tv-news/taylor-sheridan-tv-critics-paramount-executives-yellowstone-1236633432/" target="_blank">Taylor Sheridan reportedly leaving Paramount for a $1 billion NBCUniversal deal starting 2029</a> <span class="paywall free">Free</span></div>
+    <div class="meta">June 2026 · Hollywood Reporter</div>
+    <p>The king of Yellowstone country is packing his spurs for NBC. Sheridan will reportedly complete his current Paramount deal first — spinoffs and all — before taking his brand of rugged, moral-gray storytelling to Universal. The ranch house will have different wallpaper, but the boots will be the same.</p>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🤠</span> <a href="https://collider.com/yellowstone-season-5-free-streaming-pluto-tv-taylor-sheridan/" target="_blank">Catch up free: Yellowstone Season 5 is now streaming on Pluto TV at no cost</a> <span class="paywall free">Free</span></div>
+    <div class="meta">June 2026 · Collider</div>
+    <p>Before the spinoffs multiply any further, Paramount has made Season 5 available for free on Pluto TV. Perfect timing before <em>Dutton Ranch</em> wraps its first season finale on Friday, July 3.</p>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">📀</span> <a href="https://collider.com/taylor-sheridan-yellowstone-spin-off-marshals-season-1-blu-ray-release-date-august-25-2026/" target="_blank">Marshals Season 1 coming to Blu-ray August 25 — complete collection confirmed for home release</a> <span class="paywall free">Free</span></div>
+    <div class="meta">June 2026 · Collider</div>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">📺</span> <a href="https://www.tvinsider.com/1272778/taylor-sheridan-tv-shows-ratings-yellowstone-dutton-ranch-marshals-landman/" target="_blank">Which Sheridan show wins 2026? Marshals edges Dutton Ranch in the ratings war — barely</a> <span class="paywall free">Free</span></div>
+    <div class="meta">June 2026 · TV Insider</div>
+    <p><em>Marshals</em> drew 20.7M viewers across CBS and Paramount+ over 35 days, topping Yellowstone's Season 4 premiere record. <em>Dutton Ranch</em> debuted to 12.9M global views in its first week on Paramount+, setting a new streaming record for the service. The Sheridan universe is doing just fine, thanks.</p>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🎬</span> <a href="https://www.imdb.com/news/ni65882509/" target="_blank">Dutton Ranch Season 1 finale airs July 3 on Paramount+ — the Yellowstone expansion marches on</a> <span class="paywall free">Free</span></div>
+    <div class="meta">July 2026 · IMDB News</div>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🎵</span> <a href="https://fortworth.culturemap.com/news/restaurants-bars/food-events-4th-of-july/" target="_blank">Fort Worth food and entertainment picks for the holiday week: where to eat, drink, and celebrate</a> <span class="paywall free">Free</span></div>
+    <div class="meta">July 2026 · CultureMap Fort Worth</div>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">📺</span> <a href="https://www.foxsports.com/soccer/fifa-world-cup/scores" target="_blank">World Cup TV: how to watch tonight's USMNT, England, and Belgium matches — full channel guide</a> <span class="paywall free">Free</span></div>
+    <div class="meta">July 1, 2026 · FOX Sports</div>
+  </div>
+</div>
+
+</div><!-- end grid2 row 3 -->
+<!-- CURIOSITIES (full width, 5 items) -->
+<div class="section full" id="curiosities">
+  <div class="sec-head">🦩 Curiosities</div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">💘</span> <a href="https://www.cityweekly.net/news/news-of-the-weirdjuly-1-2026-aee1109e" target="_blank">Billboard romance works — eventually. California woman got 4,000 dating app submissions, still met her guy on Hinge</a> <span class="paywall free">Free</span></div>
+    <div class="meta">July 1, 2026 · City Weekly</div>
+    <p>Lisa Catalano went viral last year after renting billboard space along U.S. Highway 101, complete with her photo and a URL where suitors could apply to date her. Nearly $7,000 and 4,000 applications later, she found love — through a regular dating app. The billboards, it turns out, were a very expensive icebreaker for something that already existed on her phone.</p>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🍗</span> <a href="https://www.cityweekly.net/news/news-of-the-weirdjuly-1-2026-aee1109e" target="_blank">Japan's award-winning fried chicken has a secret: 66-year-old frying oil</a> <span class="paywall free">Free</span></div>
+    <div class="meta">July 1, 2026 · City Weekly / Oddity Central</div>
+    <p>The owner of Wakatori restaurant in Japan revealed his secret weapon: cooking oil that has been continuously used and replenished since 1960. Critics adore the depth of flavor. Health inspectors have apparently made peace with it. The oil is older than Medicare.</p>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🧅</span> <a href="https://www.cityweekly.net/news/news-of-the-weirdjuly-1-2026-aee1109e" target="_blank">Mold-aged tuna is the hottest thing in high-end Japanese cuisine and, yes, it's intentional</a> <span class="paywall free">Free</span></div>
+    <div class="meta">July 1, 2026 · City Weekly</div>
+    <p>Bluefin tuna is coated in Koji mold and aged for up to eight weeks until covered in a thick white fur, then carefully scraped and served raw as sashimi. Diners describe it as umami on another level. The uninitiated describe it as a lot of trust to extend toward a fish you met in a mold farm.</p>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🧘</span> <a href="https://www.cityweekly.net/news/news-of-the-weirdjuly-1-2026-aee1109e" target="_blank">Indian monk is 5 years into a 12-year vow to never sit or lie down — uses harnesses, ropes, and sheer will</a> <span class="paywall free">Free</span></div>
+    <div class="meta">July 1, 2026 · City Weekly</div>
+    <p>Daulat Giri Ji Maharaj of the Standing Babas (Khareshwari) sect sleeps upright in rope swings and harnesses as an act of penance and devotion to goddess Shiva. He is seven years from completion. Standing ovation, genuinely.</p>
+  </div>
+
+  <div class="item">
+    <div class="top"><span class="badge-new">NEW</span> <span class="emoji">🦒</span> <a href="https://www.usnews.com/news/offbeat" target="_blank">Texas giraffe named Gracie goes for a solo walkabout after escaping a private ranch — later found safe</a> <span class="paywall free">Free</span></div>
+    <div class="meta">June 2026 · AP / U.S. News Offbeat</div>
+    <p>Gracie the giraffe slipped away from a remote Texas ranch and was spotted wandering the surrounding countryside, presumably in search of better snacks or a change of scenery. She was recovered unharmed. The ranch has not commented on what Gracie was looking for, but early theories include a wider social circle and a better view.</p>
+  </div>
+</div>
+<!-- OUT & ABOUT (full width, two inner columns) -->
+<div class="section full" id="events">
+  <div class="sec-head">📍 Out &amp; About</div>
+  <div class="grid2">
+
+    <div>
+      <div class="sub-head">🏡 Keller &amp; Nearby</div>
+      <div class="item">
+        <div class="top"><span class="emoji">🎆</span> <a href="https://dfwpulse.com/blog/dfw-4th-of-july-fireworks-2026" target="_blank">Keller Lights — July 4 at Keller Town Hall</a></div>
+        <div class="meta">20-min fireworks, Emerald City live music, drone show, food vendors. Free admission.</div>
+      </div>
+      <div class="item">
+        <div class="top"><span class="emoji">🎆</span> <a href="https://www.fox4news.com/news/july-4th-fireworks-2026-dallas-fort-worth" target="_blank">Hurst Stars &amp; Stripes — July 3 at Hurst Community Park</a></div>
+        <div class="meta">Live music, food trucks, kids area, fireworks. Free shuttles from North East Mall.</div>
+      </div>
+      <div class="item">
+        <div class="top"><span class="emoji">🎇</span> <a href="https://www.fox4news.com/news/july-4th-fireworks-2026-dallas-fort-worth" target="_blank">Grapevine Fireworks Extravaganza — July 4 over Lake Grapevine</a></div>
+        <div class="meta">9:30 PM fireworks show on the lake. Arrive early for waterfront spots.</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sub-head">🤠 Fort Worth &amp; DFW</div>
+      <div class="item">
+        <div class="top"><span class="emoji">🎆</span> <a href="https://fortworth.culturemap.com/news/entertainment/fort-worth-4th-of-july/" target="_blank">Fourth at Panther Island Pavilion — July 4, Fort Worth</a></div>
+        <div class="meta">Free! Live country music, Trinity River tubing, ziplining, horseback riding, fireworks at 9:30 PM.</div>
+      </div>
+      <div class="item">
+        <div class="top"><span class="emoji">🎇</span> <a href="https://www.dallasobserver.com/arts-culture/fourth-of-july-fireworks-guide-dallas-2026-22572838/" target="_blank">Addison's Kaboom Town! — July 3 (consistently rated best fireworks in DFW)</a></div>
+        <div class="meta">Gates open 5 PM, fireworks 9:30 PM. Draws visitors from across the country — go early.</div>
+      </div>
+      <div class="item">
+        <div class="top"><span class="emoji">📅</span> <a href="https://www.nbcdfw.com/news/local/red-white-and-blue-fourth-of-july-events-near-you-2/4042318/" target="_blank">Plan ahead: full DFW July 4th fireworks &amp; festival guide</a></div>
+        <div class="meta">NBC DFW's comprehensive roundup of events across Tarrant, Dallas, Collin, and Denton counties.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- FOOTER -->
+<div class="footer">
+  <p><b>Sources:</b> American Immigration Council · PBS NewsHour · CNBC · Nature · Space.com · IEEE Spectrum · SciTechDaily · Yahoo Sports · Sky Sports · FOX Sports · Sports Illustrated · DallasCowboys.com · CBS Sports · NBA.com · Collider · Hollywood Reporter · TV Insider · IMDB News · CultureMap Fort Worth · DFW Pulse · NBC DFW · FOX 4 · Dallas Observer · KTVZ · News Channel 6 KAUZ · Fort Worth Report · City Weekly · U.S. News · Kiplinger · Fortune · CBS News · Climate &amp; Economy · Deloitte · BLS · NWS</p>
+  <p><b>How this works:</b> Kevin's Daily Brief is assembled automatically each morning by Claude, an AI from Anthropic, using live web searches and public data sources. Stories are deduplicated across editions. Built 2026-07-01 AM.</p>
+</div>
+</div><!-- end .wrap -->
 </body>
 </html>
